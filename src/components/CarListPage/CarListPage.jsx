@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './CarListPage.module.scss'
 import CarPreview from '../CarPreview/CarPreview';
 import Pagination from '../UI/Pagination/Pagination';
@@ -15,6 +15,10 @@ const CarListPage = () => {
     const carsList = useSelector(state => state.cars);
     const selectState = useSelector(state => state.select);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(currentPage > Math.ceil(carsList.length/5)) setCurrentPage(1);
+    }, [selectState])
     
     const [ref, scrollToRef] = useScrollTo();
 
