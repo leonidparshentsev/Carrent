@@ -1,0 +1,80 @@
+.car_preview {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 2px solid var(--gray);
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+
+    .car__image {
+        flex: 0 0 50%;
+        align-self: center;
+        // text-align: center;
+
+        img {
+            // height: 75%;
+            // margin: auto 0;
+            height: auto;
+            width: 65%;
+        }
+    }
+
+    .car__about {
+        flex: 0 0 25%;
+
+        .about__title {
+            font-size: 2rem;
+            line-height: 2.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .about__benefits {
+            font-size: 1.2rem;
+            line-height: 1.4rem;
+
+            & li {
+                position: relative;
+                padding-left: 1.8rem;
+
+                &::before {
+                    position: absolute;
+                    content: '';
+                    top: 0;
+                    left: 0;
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    background-image: url('/images/svg/ok.svg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+            }
+
+            & li:not(:last-child) {
+                margin-bottom: .5rem;
+            }
+        }
+    }
+
+    .car__price {
+        flex: 0 0 25%;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        color: darken($color: #F8F8F8, $amount: 30%);
+        text-align: end;
+
+        & p {
+            margin-bottom: .5rem;
+
+            &:last-of-type {
+                margin-bottom: 2rem;
+            }
+        }
+
+        .price_daily {
+            color: var(--black);
+            font-size: 1.6rem;
+            line-height: 1.8rem;
+            font-weight: 600;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+.button {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+    font-family: 'Catamaran', sans-serif;
+
+    border: 1px solid var(--green);
+    cursor: pointer;
+    border-radius: 1.5rem;
+    padding: .6rem 1.5rem .5rem;
+
+    background-color: transparent;
+    
+    &:hover {
+        background-color: var(--gray);
+    }
+
+    &:active {
+        background-color: darken($color: #F8F8F8, $amount: 2%);
+    }
+}
+
+.green {
+    background-color: var(--green);
+    color: var(--white);
+
+    &:hover {
+        background-color: darken($color: #38BC55, $amount: 2%);
+    }
+
+    &:active {
+        background-color: darken($color: #38BC55, $amount: 5%);
+    }
+}

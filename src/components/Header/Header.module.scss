@@ -1,0 +1,64 @@
+.header {
+    font-size: 1.6rem;
+    font-weight: 600;
+
+    .container {
+        margin: 0 auto;
+        max-width: 120rem;
+        padding: 1.5rem 3rem;
+
+        .content {
+            display: flex;
+            align-items: center;
+
+            .logo {
+                font-size: 22px;
+                font-weight: 700;
+                margin-right: 4rem;
+
+                span {
+                    color: var(--green);
+                }
+            }
+
+            .nav {
+                flex-grow: 1;
+
+
+                &__list {
+                    display: flex;
+                    margin-right: 4rem;
+                }
+
+                &__item {
+
+                    &:not(:last-child) {
+                        margin-right: 2rem;
+                    }
+                }
+            }
+
+            .button {
+                &:not(:last-child) {
+                    margin-right: 2rem;
+                }
+            }
+        }
+    }
+
+    .promote{
+        background-color: var(--black);
+        padding: 1rem 0;
+
+        .promote__title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--white);
+
+            span {
+                color: var(--green);
+            }
+        }
+    }
+}
+

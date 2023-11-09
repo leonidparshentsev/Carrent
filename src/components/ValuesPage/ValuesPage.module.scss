@@ -1,0 +1,50 @@
+.values {
+    .container {
+        margin: 0 auto;
+        max-width: 100rem;
+        padding: 6rem 3rem;
+
+        .content {
+            display: flex;
+            align-items: center;
+            // justify-content: space-around;
+            justify-content: space-between;
+
+            .title {
+                font-size: 2.2rem;
+                line-height: 2.4rem;
+                font-weight: 600;
+                align-self: flex-start;
+
+                span {
+                    color: var(--green);
+                }
+            }
+
+            .value__card {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                height: 18rem;
+
+                .value__img {
+                    width: 16rem;
+                    height: 14rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 1rem;
+                }
+
+                .value__text {
+                    flex-grow: 1;
+                    font-size: 1.4rem;
+                    line-height: 1.6rem;
+                    font-weight: 600;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,214 @@
+{
+    "cars" : [
+        {
+            "id" : 1,
+            "model" : "Audi A4",
+            "price" : "34.49",
+            "type" : "premium",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "premium"
+        },
+        {
+            "id" : 2,
+            "model" : "Audi Q3",
+            "price" : "35.15",
+            "type" : "premium",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "diesel",
+            "config" : "premium"
+        },
+        {
+            "id" : 3,
+            "model" : "BMW 318i",
+            "price" : "34.49",
+            "type" : "premium",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "diesel",
+            "config" : "premium"
+        },
+        {
+            "id" : 4,
+            "model" : "BMW X2",
+            "price" : "35.15",
+            "type" : "premium",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "premium"
+        },
+        {
+            "id" : 5,
+            "model" : "Hyundai Solaris",
+            "price" : "16.78",
+            "type" : "sedan",
+            "transmission" : "manual",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 6,
+            "model" : "Kia Rio",
+            "price" : "16.78",
+            "type" : "sedan",
+            "transmission" : "manual",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 7,
+            "model" : "Omoda S5",
+            "price" : "18.49",
+            "type" : "sedan",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "advanced"
+        },
+        {
+            "id" : 8,
+            "model" : "Skoda Rapid",
+            "price" : "16.78",
+            "type" : "sedan",
+            "transmission" : "manual",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 9,
+            "model" : "Volkswagen Polo",
+            "price" : "16.78",
+            "type" : "sedan",
+            "transmission" : "manual",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 10,
+            "model" : "Chery Tiggo 4",
+            "price" : "20.38",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 11,
+            "model" : "Chery Tiggo 7",
+            "price" : "22.59",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4+",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 12,
+            "model" : "Exeed LX",
+            "price" : "21.38",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 13,
+            "model" : "Exeed TXL",
+            "price" : "22.59",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4+",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 14,
+            "model" : "Geely Coolray",
+            "price" : "21.38",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 15,
+            "model" : "Haval Jolion",
+            "price" : "21.38",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 16,
+            "model" : "Kia Sportage",
+            "price" : "22.59",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 17,
+            "model" : "Moskvich 3",
+            "price" : "21.38",
+            "type" : "suv",
+            "transmission" : "manual",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 18,
+            "model" : "Omoda C5",
+            "price" : "21.38",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 19,
+            "model" : "Skoda Karoq",
+            "price" : "21.38",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        },
+        {
+            "id" : 20,
+            "model" : "Skoda Kodiaq",
+            "price" : "21.38",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4+",
+            "gasType" : "diesel",
+            "config" : "base"
+        },
+        {
+            "id" : 21,
+            "model" : "Volkswagen Tiguan",
+            "price" : "22.59",
+            "type" : "suv",
+            "transmission" : "auto",
+            "seats" : "4",
+            "gasType" : "petrol",
+            "config" : "base"
+        }
+    ]
+}

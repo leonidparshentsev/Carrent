@@ -1,0 +1,29 @@
+.search {
+    background-color: var(--gray);
+
+    .container {
+        margin: 0 auto;
+        max-width: 100rem;
+        padding: 6rem 3rem 3rem;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+
+            .inputs {
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.6rem;
+                margin-bottom: 2rem;
+            }
+
+            .button {
+                align-self: flex-end;
+
+                button {
+                    width: 16rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+.car_list {
+    border-bottom: 2px solid var(--gray);
+
+    .container {
+        margin: 0 auto;
+        max-width: 100rem;
+        padding: 6rem 3rem 3rem;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+
+            .header {
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 3rem;
+                border-bottom: 2px solid var(--gray);
+                margin-bottom: 2rem;
+
+                .title {
+                    font-size: 3.2rem;
+                    line-height: 3.4rem;
+                    margin-bottom: 2rem;
+                }
+
+                .filters {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.4rem;
+                    line-height: 1.6rem;
+
+                    .available {
+                        margin-right: auto;
+                    }
+
+                    .select {
+                        font-size: 1.2rem;
+                        position: relative;
+                        width: 12rem;
+                        padding: .8rem 1rem;
+                        border: none;
+                        border-radius: .5rem;
+                        background-color: var(--gray);
+                        margin-right: 1rem;
+                        appearance: none;
+
+                        background-image: url('/images/svg/arrow-down.svg');
+                        background-repeat: no-repeat;
+                        background-size: 1.5rem;
+                        background-position: right .5rem center;
+                    }
+
+                    .clear {
+                        cursor: pointer;
+                        background-color: transparent;
+                        border: none;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

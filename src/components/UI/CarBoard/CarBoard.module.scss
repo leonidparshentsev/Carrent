@@ -1,0 +1,70 @@
+.title {
+    margin-bottom: 1rem;
+}
+
+.board {
+    display: flex;
+
+    .button {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button_home {
+        background-color: var(--white);
+        border: 1px solid darken($color: #F8F8F8, $amount: 10%);
+        padding: 0 1rem;
+        border-radius: .5rem;
+        transition: all .1s linear;
+
+        &:not(:last-child) {
+            margin-right: .8rem;
+        }
+
+        &.active {
+            background-color: lighten($color: #38BC55, $amount: 47%);
+            border: 1px solid var(--green);
+            transition: all .1s linear;
+        }
+    }
+
+    .button_popular {
+        background-color: transparent;
+        border: none;
+        border-bottom: 3px solid var(--gray);
+        transition: border .1s linear;
+
+        &:not(:first-child) {
+            padding: 0 .5rem 0 2rem;
+        }
+
+        svg {
+            fill: darken($color: #F8F8F8, $amount: 60%);
+            transition: all .1s ease-in-out;
+        }
+
+        span {
+            margin-left: 1rem;
+            color: darken($color: #F8F8F8, $amount: 60%);
+            transition: all .1s ease-in-out;
+        }
+
+        &.active {
+            border-bottom: 3px solid var(--green);
+            transition: border .1s linear;
+
+            svg {
+                fill: var(--black);
+                transition: all .1s ease-in-out;
+            }
+    
+            span {
+                margin-left: 1rem;
+                color: var(--black);
+                transition: all .1s ease-in-out;
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+.app {
+    background-color: var(--green);
+
+    .container {
+        margin: 0 auto;
+        max-width: 100rem;
+        padding: 6rem 3rem;
+
+        .content {
+            display: flex;
+
+            .app__promote {
+                color: var(--white);
+                flex: 0 0 40%;
+                display: flex;
+                flex-direction: column;
+                
+                .app__title {
+                    font-size: 3.2rem;
+                    line-height: 3.4rem;
+                    margin-bottom: 2rem;
+                }
+
+                .app__text {
+                    font-size: 1.4rem;
+                    line-height: 1.6rem;
+                    margin-bottom: 2rem;
+                }
+
+                .app__links {
+                    // flex-grow: 1;
+                    margin-top: auto;
+                    display: flex;
+
+                    .link {
+                        flex: 0 1 40%;
+
+                        img {
+                            height: 100%;
+                            width: auto;
+                        }   
+                    }
+                }
+            }
+
+            .image {
+                position: relative;
+                flex: 0 0 60%;
+                height: 30rem;
+
+                img {
+                    position: relative;
+                    bottom: 8rem;
+                    height: 45rem;
+                    width: auto;
+                }
+            }
+        }
+    }
+}
