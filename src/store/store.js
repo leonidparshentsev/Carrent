@@ -1,10 +1,12 @@
 import carsSlice from "@/reducer/carsSlice";
-import selectSlice from "@/reducer/selectSlice";
+import filterSlice from "@/reducer/filterSlice";
+import orderSlice from "@/reducer/orderSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 export default configureStore({
     reducer: {
         cars: carsSlice,
-        select: selectSlice
+        filter: filterSlice,
+        order: orderSlice
     } 
 })

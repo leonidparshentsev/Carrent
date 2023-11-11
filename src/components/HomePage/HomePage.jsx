@@ -6,8 +6,27 @@ import Image from 'next/image';
 import mini from '../../../public/images/mini.png';
 import CarBoard from '../UI/CarBoard/CarBoard';
 import Input from '../UI/Input/Input';
+import { useDispatch, useSelector } from 'react-redux';
+import { setType } from '@/reducer/orderSlice';
+import Link from 'next/link';
+import useInputs from '@/hooks/useInputs';
 
 const HomePage = () => {
+
+    const orderState = useSelector(state => state.order);
+    const dispatch = useDispatch();
+
+    const changeCarTypeHandler = (type)=> {
+        if(type !== orderState.carType) {
+            dispatch(setType(type));
+        } else {
+            dispatch(setType(''));
+        }
+    };
+
+    const [changePickUpLocHandler,
+        changePickUpTimeHandler,
+        changeDropOffHandler] = useInputs();
 
     return (
         <section className={styles.home}>
@@ -19,6 +38,7 @@ const HomePage = () => {
                         </h1>
                         <div className={styles.main__img}>
                             <Image
+                                priority
                                 src={mini}
                                 sizes='100%'
                                 alt="Main page car photo"
@@ -27,27 +47,39 @@ const HomePage = () => {
                     </div>
                     <div className={styles.home__search}>
                         <div className={styles.wrapper}>
-                            <CarBoard title='VEHICLE TYPE' />
+                            <CarBoard title='VEHICLE TYPE' 
+                                activeType={orderState.carType}
+                                setActiveType={changeCarTypeHandler} 
+                                />
                         </div>
                         <div className={styles.wrapper}>
                             <Input
                                 label='PICK UP & RETURN LOCATION'
-                                placeholder='Pick up & Return location' />
+                                placeholder='Pick up & Return location'
+                                initialLoc={orderState.pickUpLoc}
+                                changeLoc={changePickUpLocHandler}
+                                />
                         </div>
                         <div className={styles.search__time}>
                             <div className={styles.wrapper}>
-                                <Input label='PICK UP TIME' time />
+                                <Input label='PICK UP TIME' time
+                                    initialDate={orderState.pickUpTime}
+                                    changeDate={changePickUpTimeHandler} />
                             </div>
                             <div className={styles.wrapper}>
-                                <Input label='DROP OFF TIME' time />
+                                <Input label='DROP OFF TIME' time
+                                    initialDate={orderState.dropOffTime}
+                                    changeDate={changeDropOffHandler} />
                             </div>
                         </div>
-                        <Button green
-                            style={{
-                                padding: '1rem 4rem',
-                                alignSelf: 'start'
-                            }}
-                        >Search</Button>
+                        <Link href='cars' className={styles.link}>
+                            <Button green
+                                style={{
+                                    padding: '1rem 4rem',
+                                    alignSelf: 'start'
+                                }}
+                            >Search</Button>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -5,20 +5,34 @@ import CarPreview from '../CarPreview/CarPreview';
 import Pagination from '../UI/Pagination/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import useScrollTo from '@/hooks/useScrollTo';
-import { setPrice, setSeats, setTransmission, setDefaultSelect } from '@/reducer/selectSlice';
-import { filterByPrice, filterBySeats, filterByTransmission, setInitialCars } from '@/reducer/carsSlice';
+import { setPrice, setSeats, setTransmission, setDefaultSelect } from '@/reducer/filterSlice';
+import { filterByPrice, filterBySeats, filterByTransmission, setInitialCars, filterByType } from '@/reducer/carsSlice';
+import { setType } from '@/reducer/orderSlice';
 
 const CarListPage = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     
     const carsList = useSelector(state => state.cars);
-    const selectState = useSelector(state => state.select);
+    const selectState = useSelector(state => state.filter);
+    const orderState = useSelector(state => state.order);
     const dispatch = useDispatch();
 
     useEffect(() => {
         if(currentPage > Math.ceil(carsList.length/5)) setCurrentPage(1);
-    }, [selectState])
+    }, [selectState]);
+
+    useEffect(() => {
+        if(orderState.carType !== '') {
+            dispatch(filterByType(orderState.carType));
+        }
+
+        return () => { 
+            dispatch(setType(''));
+            dispatch(setInitialCars());
+        };
+
+    }, []);
     
     const [ref, scrollToRef] = useScrollTo();
 
@@ -77,13 +91,18 @@ const CarListPage = () => {
                         </div>
                     </div>
                     <div className={styles.main}>
-                        {carsList?.map((car, index) => {
+                        { 
+                        carsList.length > 0 
+                        ? 
+                        carsList.map((car, index) => {
                             if(index >= ((currentPage * 5) - 5) 
                                 && index < ((currentPage * 5))) {
                                     return <CarPreview key={car.id} car={car}/>
                             }
+                        }) 
+                        :
+                        <p className={styles.no_car}>There are no suitable cars</p>
                         }
-                        )}
                     </div>
                     <Pagination 
                         count={Math.ceil(carsList.length/5)}

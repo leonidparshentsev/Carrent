@@ -6,8 +6,8 @@ const defaultSelectState = {
     transmission: 'default'
 };
 
-export const selectSlice = createSlice({
-    name: 'select',
+export const filterSlice = createSlice({
+    name: 'filter',
     initialState: {...defaultSelectState},
     reducers: {
         setPrice: (state, action) => {state.price = action.payload},
@@ -17,9 +17,9 @@ export const selectSlice = createSlice({
     }
 });
 
-export const { setPrice, setSeats, setTransmission, setDefaultSelect } = selectSlice.actions;
+export const { setPrice, setSeats, setTransmission, setDefaultSelect } = filterSlice.actions;
 
-export default selectSlice.reducer;
+export default filterSlice.reducer;
 
 // const [selectState, setSelectState] = useState({...defaultSelectState});
 // const priceHandler = (e) => setSelectState({...selectState, price: e.target.value});

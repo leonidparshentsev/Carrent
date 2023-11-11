@@ -2,10 +2,14 @@ import React from 'react';
 import styles from './ModelCard.module.scss'
 import Button from '../UI/Button/Button';
 import classNames from 'classnames';
-// import haval from '../../../public/images/models/haval.webp'
+import { useDispatch } from 'react-redux';
+import { setCarId } from '@/reducer/orderSlice';
+import Link from 'next/link';
 
 
 const ModelCard = ({car}) => {
+
+    const dispatch = useDispatch();
 
     if(car.model === undefined) {
         return (
@@ -26,7 +30,11 @@ const ModelCard = ({car}) => {
             <p className={styles.model__price}>
                 Price from <span>{car.price}$ /day</span>
             </p>
-            <Button style={{width: '100%'}} green>Rent a Car</Button>
+            <Link href={`/book/${car.id}`}>
+                <Button 
+                    onClick={() => dispatch(setCarId(car?.id))}
+                    style={{width: '100%'}} green>Rent a Car</Button>
+            </Link>
         </div>
     );
 };

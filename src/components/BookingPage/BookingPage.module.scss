@@ -1,0 +1,12 @@
+.booking {
+    .container {
+        margin: 0 auto;
+        max-width: 100rem;
+        padding: 4rem 3rem;
+
+        .content {
+            display: flex;
+            justify-content: space-around; 
+        }
+    }
+}

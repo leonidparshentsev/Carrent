@@ -34,11 +34,14 @@ export const carsSlice = createSlice({
 
             return [...state.filter(car => car.transmission === action.payload.value)]
         },
+        filterByType: (state, action) => {
+            return [...state.filter(car => car.type === action.payload)]
+        },
         setInitialCars: state => [...initial.cars]
     }
 });
 
-export const { filterByPrice, filterBySeats, setInitialCars, filterByTransmission } = carsSlice.actions;
+export const { filterByPrice, filterBySeats, setInitialCars, filterByTransmission, filterByType } = carsSlice.actions;
 
 export default carsSlice.reducer;
 
@@ -49,5 +52,4 @@ function sort(state, value) {
     if(value === 'high') {
         state.sort((a, b) => +b.price - +a.price)
     }
-    // return state;
 }

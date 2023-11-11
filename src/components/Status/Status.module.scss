@@ -1,0 +1,14 @@
+.status {
+    background-color: var(--gray);
+
+    .container {
+        margin: 0 auto;
+        max-width: 100rem;
+        padding: 3rem 3rem;
+
+        .content {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
