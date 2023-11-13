@@ -13,22 +13,23 @@ const Input = ({placeholder,
                 initialDate
     }) => {
 
-    const [dateInput,
-        setDateInput,
-        timeInput,
-        setTimeInput] = useDate(initialDate);
+    const {dateInput,
+            setDateInput,
+            timeInput,
+            setTimeInputHandler} = useDate(initialDate);
+
     const [locInput, setLocInput] = useState(initialLoc);
 
     const onDateChangeHandler = (e) => {
         let currentDate = `${e.target.value}T${timeInput}`;
         setDateInput(e.target.value);
-        changeDate(currentDate);
+        changeDate(new Date(currentDate).getTime());
     }
 
     const onTimeChangeHandler = (e) => {
         let currentDate = `${dateInput}T${e.target.value}`;
-        setTimeInput(e.target.value);
-        changeDate(currentDate);
+        setTimeInputHandler(e.target.value);
+        changeDate(new Date(currentDate).getTime());
     }
 
     const onLocChangeHandler = (e) => {

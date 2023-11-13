@@ -7,14 +7,14 @@ import useInputs from '@/hooks/useInputs';
 
 const SearchPage = () => {
 
-    const [pickUpLoc,
+    const {pickUpLoc,
             pickUpTime,
             returnLoc,
             dropOffTime,
             changePickUpLocHandler,
             changeReturnLocHandler,
             changePickUpTimeHandler,
-            changeDropOffHandler] = useInputs();
+            changeDropOffHandler} = useInputs();
 
     return (
         <section className={styles.search}>

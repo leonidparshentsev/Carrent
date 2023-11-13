@@ -68,6 +68,14 @@
         .arrow {
             transform: rotateZ(90deg);
             margin: 0;
+
+            &:hover {
+                transform: rotateZ(90deg) scale(0.9);
+            }
+
+            &:active {
+                transform: rotateZ(90deg) scale(0.8);
+            }
         }
 
         .left_arrow {

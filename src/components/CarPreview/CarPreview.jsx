@@ -3,10 +3,11 @@ import styles from './CarPreview.module.scss'
 import Button from '../UI/Button/Button';
 import { useDispatch } from 'react-redux';
 import { setCarId } from '@/reducer/orderSlice';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const CarPreview = ({car}) => {
     
+    const route = useRouter();
     const dispatch = useDispatch();
 
     return (
@@ -31,11 +32,12 @@ const CarPreview = ({car}) => {
                 <p>FROM</p>
                 <p className={styles.price_daily}>$ {car?.price} /day</p>
                 <p>TOTAL {car?.price}$</p>
-                <Link href={`/book/${car.id}`}>
-                    <Button green
-                        onClick={() => dispatch(setCarId(car?.id))}
-                        >Rent a car</Button>
-                </Link>
+                <Button green
+                    onClick={() => {
+                        dispatch(setCarId(car?.id));
+                        route.push(`/book/${car.id}`);
+                    }}
+                    >Rent a car</Button>
             </div>
         </article>
     );

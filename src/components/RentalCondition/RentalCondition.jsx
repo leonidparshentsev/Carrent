@@ -1,38 +1,28 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import styles from './RentalCondition.module.scss'
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
-import { useSelector } from 'react-redux';
 import useInputs from '@/hooks/useInputs';
 
-const RentalCondition = () => {
-
-    const orderState = useSelector(state => state.order);
-    const carsList = useSelector(state => state.cars);
-
-    const [currentCar, setCurrentCar] = useState(carsList[1]);
-
-    useEffect(() => {
-        setCurrentCar(carsList[orderState.carId - 1]);
-    }, [orderState.carId, carsList])
-
-    const [pickUpLoc,
+const RentalCondition = ({car}) => {
+    
+    const {pickUpLoc,
         pickUpTime,
         returnLoc,
         dropOffTime,
         changePickUpLocHandler,
         changeReturnLocHandler,
         changePickUpTimeHandler,
-        changeDropOffHandler] = useInputs();
+        changeDropOffHandler} = useInputs();
 
     return (
         <div className={styles.rental_condition}>
             <h2 className={styles.main_title}>
-                {currentCar?.model}
+                {car?.model}
             </h2>
             <div className={styles.image}>
                 <img 
-                src={`/images/models/${currentCar?.type}/${currentCar?.model}.png`} 
+                src={`/images/models/${car?.type}/${car?.model}.png`} 
                 alt=""/>
             </div>
             <div className={styles.inputs}>

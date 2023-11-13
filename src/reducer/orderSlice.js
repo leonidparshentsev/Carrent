@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initial = {
     pickUpLoc: '',
     returnLoc: '',
-    pickUpTime: new Date(Date.now()).getTime(),
-    dropOffTime: new Date(Date.now() + (24*60*60*1000)).getTime(),
+    pickUpTime: new Date(Date.now() + (24*60*60*1000)).getTime(),
+    dropOffTime: new Date(Date.now() + (24*60*60*1000*2)).getTime(),
     carType: '',
     carId: 1,
 }

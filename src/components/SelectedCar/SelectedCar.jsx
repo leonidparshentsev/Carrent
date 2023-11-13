@@ -3,7 +3,7 @@ import styles from './SelectedCar.module.scss'
 import { useSelector } from 'react-redux';
 import GrayBlock from '../UI/GrayBlock/GrayBlock';
 
-const SelectedCar = ({carId}) => {
+const SelectedCar = ({car}) => {
     const carList = useSelector(state => state.cars);
 
     return (
@@ -11,16 +11,16 @@ const SelectedCar = ({carId}) => {
         <GrayBlock>
             <h2 className={styles.main_title}>Your selection</h2>
             <div className={styles.image}>
-                <img src={`/images/models/${carList[carId].type}/${carList[carId].model}.png`} alt=""/>
+                <img src={`/images/models/${carList[car.id - 1].type}/${carList[car.id - 1].model}.png`} alt=""/>
             </div>
-            <h4 className={styles.model_title}>{carList[carId].model}</h4>
+            <h4 className={styles.model_title}>{carList[car.id - 1].model}</h4>
             <div className={styles.overview}>
                 <h3 className={styles.overview__title}>Performance overview</h3>
                 <div className={styles.overview__block}>
                     <h5 className={styles.block__title}>Vehicle</h5>
                     <p className={styles.block__text}>
                         <span>Vehicle Subtotal</span>
-                        <span>$ {carList[carId].price}</span>
+                        <span>$ {carList[car.id - 1].price}</span>
                     </p>
                     <p className={styles.block__text}>
                         <span>Unlimited kilometers</span>
@@ -48,7 +48,7 @@ const SelectedCar = ({carId}) => {
                 <div className={styles.overview__block}>
                     <h5 className={styles.block__title}>
                         <span>Your total price</span>
-                        <span>$ {carList[carId].price}</span>
+                        <span>$ {carList[car.id - 1].price}</span>
                     </h5>
                 </div>
             </div> 

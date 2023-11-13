@@ -24,9 +24,12 @@ const HomePage = () => {
         }
     };
 
-    const [changePickUpLocHandler,
-        changePickUpTimeHandler,
-        changeDropOffHandler] = useInputs();
+    const {pickUpLoc,
+        pickUpTime,
+        dropOffTime,
+        changePickUpLocHandler,
+        changePickUpTimeHandler, 
+        changeDropOffHandler} = useInputs();
 
     return (
         <section className={styles.home}>
@@ -56,19 +59,19 @@ const HomePage = () => {
                             <Input
                                 label='PICK UP & RETURN LOCATION'
                                 placeholder='Pick up & Return location'
-                                initialLoc={orderState.pickUpLoc}
+                                initialLoc={pickUpLoc}
                                 changeLoc={changePickUpLocHandler}
                                 />
                         </div>
                         <div className={styles.search__time}>
                             <div className={styles.wrapper}>
                                 <Input label='PICK UP TIME' time
-                                    initialDate={orderState.pickUpTime}
+                                    initialDate={pickUpTime}
                                     changeDate={changePickUpTimeHandler} />
                             </div>
                             <div className={styles.wrapper}>
                                 <Input label='DROP OFF TIME' time
-                                    initialDate={orderState.dropOffTime}
+                                    initialDate={dropOffTime}
                                     changeDate={changeDropOffHandler} />
                             </div>
                         </div>
