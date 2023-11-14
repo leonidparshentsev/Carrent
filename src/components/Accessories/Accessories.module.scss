@@ -1,10 +1,63 @@
 .accessories {
+    display: flex;
+    flex-direction: column;
 
     .main_title {
         font-size: 2.2rem;
         font-weight: 400;
         letter-spacing: .1rem;
         margin-bottom: 3rem;
+    }
+
+    .benefits {
+
+        &__title {
+            font-size: 1.6rem;
+            line-height: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &__list {
+            margin-bottom: 2rem;
+
+            .list__item {
+                font-size: 1.2rem;
+                line-height: 1.4rem;
+
+                position: relative;
+                padding-left: 1.8rem;
+
+                &::before {
+                    position: absolute;
+                    content: '';
+                    top: 0;
+                    left: 0;
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    background-image: url('/images/svg/ok.svg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: .4rem;
+                }
+            }
+        }
+    }
+
+    .additional {
+        margin-bottom: 2rem;
+        &__title {
+            font-size: 1.6rem;
+            line-height: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
     }
 }
 

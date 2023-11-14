@@ -51,6 +51,7 @@ const DriverDetails = ({setCurrentStatus, car}) => {
                 Free cancelation up to 48h before pick up
             </p>
             <Button green
+                style={{width: '80%', alignSelf: 'center'}}
                 onClick={setCurrentStatus}>Confirm</Button>
         </div>
     );
