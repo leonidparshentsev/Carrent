@@ -15,68 +15,43 @@
         display: flex;
         width: 100%;
 
-        .label {
+        .label_container {
             flex: 1 0;
         }
 
-        .label:not(:last-child) {
+        .label_container:not(:last-child) {
             margin-right: 2rem;
         }
     }
 
-    .label {
-        font-size: 1.2rem;
-        line-height: 1.4rem;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 3rem;
+    // .label {
+    //     font-size: 1.2rem;
+    //     line-height: 1.4rem;
+    //     display: flex;
+    //     flex-direction: column;
+    //     margin-bottom: 3rem;
 
-        span {
-            margin-bottom: 1rem;
-        }
+    //     span {
+    //         margin-bottom: 1rem;
+    //     }
 
-        .input {
-            border: none;
-            border-radius: 0;
-            border-bottom: .1rem solid var(--dark_gray);
-            outline: none;
-            height: 2rem;
-            padding: 0 .1rem;
+    //     .input {
+    //         border: none;
+    //         border-radius: 0;
+    //         border-bottom: .1rem solid var(--dark_gray);
+    //         outline: none;
+    //         height: 2rem;
+    //         padding: 0 .1rem;
 
-            &:focus {
-                border-bottom: .1rem solid var(--green);
-            }
+    //         &:focus {
+    //             border-bottom: .1rem solid var(--green);
+    //         }
 
-        }
-    }
-
-    .overview__block {
-        padding-bottom: 1rem;
-        margin-bottom: 1rem;
-    
-        &:not(:last-child) {
-            border-bottom: 1px solid var(--dark_gray);
-        }
-    
-        .block__title {
-            font-size: 1.6rem;
-            line-height: 1.8rem; 
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-        }
-        .block__text {
-            font-size: 1.4rem;
-            line-height: 1.6rem;
-            margin-bottom: .4rem;
-            display: flex;
-            justify-content: space-between;
-        } 
-    }
+    //     }
+    // }
 
     .cancelation {
-        margin: 2.5rem 0;
+        margin-bottom: 2.5rem;
         font-size: 1.4rem;
         line-height: 1.6rem;
         color: var(--green);

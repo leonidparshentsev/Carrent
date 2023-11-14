@@ -7,6 +7,8 @@ import RentalCondition from '../RentalCondition/RentalCondition';
 import Accessories from '../Accessories/Accessories';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCarId } from '@/reducer/orderSlice';
+import useInputs from '@/hooks/useInputs';
+import Payment from '../Payment/Payment';
 
 const BookingPage = ({params}) => {
     // 'condition' / 'driver' / 'payment'
@@ -15,6 +17,9 @@ const BookingPage = ({params}) => {
     const dispatch = useDispatch();
 
     const [currentCar, setCurrentCar] = useState(carsList[params.id - 1]);
+
+    const {pickUpTime, dropOffTime} = useInputs();
+    const daysCount = Math.floor((dropOffTime - pickUpTime) / ((24*59*60*1000)));
 
     useEffect(() => {
         setCurrentCar(carsList[params.id - 1]);
@@ -31,6 +36,8 @@ const BookingPage = ({params}) => {
                     <>
                         <RentalCondition car={currentCar}/>
                         <Accessories 
+                            car={currentCar}
+                            daysCount={daysCount}
                             setCurrentStatus={()=>setCurrentStatus('driver')}/>
                     </>
                     }
@@ -39,15 +46,20 @@ const BookingPage = ({params}) => {
                         <SelectedCar car={currentCar}/>
                         <DriverDetails 
                             car={currentCar}
+                            daysCount={daysCount}
                             setCurrentStatus={()=>setCurrentStatus('payment')}/>
                     </>
                     }
                     {currentStatus === 'payment' &&
                     <>
                         <SelectedCar car={currentCar}/>
-                        <DriverDetails
+                        <Payment
                             car={currentCar}
-                            setCurrentStatus={()=>setCurrentStatus('payment')}/>
+                            daysCount={daysCount}
+                            setCurrentStatus={()=>setCurrentStatus('payment')} />
+                        {/* <DriverDetails
+                            car={currentCar}
+                            setCurrentStatus={()=>setCurrentStatus('payment')}/> */}
                     </>
                     }   
                 </div>

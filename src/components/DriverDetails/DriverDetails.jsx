@@ -2,50 +2,26 @@ import React from 'react';
 import styles from './DriverDetails.module.scss'
 import GrayBlock from '../UI/GrayBlock/GrayBlock';
 import Button from '../UI/Button/Button';
-import useInputs from '@/hooks/useInputs';
+import PriceOverview from '../PriceOverview/PriceOverview';
+import BookingInput from '../UI/BookingInput/BookingInput';
 
-const DriverDetails = ({setCurrentStatus, car}) => {
-
-    const {pickUpTime, dropOffTime} = useInputs();
-    const daysCount = Math.floor((dropOffTime - pickUpTime) / (24*60*60*1000)); 
+const DriverDetails = ({setCurrentStatus, car, daysCount}) => {
 
     return (
         <div className={styles.driver_details}>
             <h2 className={styles.main_title}>Driver details</h2>
             <div className={styles.name}>
-                <label className={styles.label}>
-                    <span>First name</span>
-                    <input className={styles.input} type="text" />
-                </label>
-                <label className={styles.label}>
-                    <span>Last name</span>
-                    <input className={styles.input} type="text" />
-                </label>
-            </div>
-            <label className={styles.label}>
-                <span>Phone number</span>
-                <input className={styles.input} type="tel" />
-            </label>
-            <label className={styles.label}>
-                <span>Email address</span>
-                <input className={styles.input} type="email" />
-            </label>
-            <GrayBlock>
-                <div className={styles.overview__block}>
-                    <h5 className={styles.block__title}>
-                        <span>Your total rental price</span>
-                        <span>
-                            $ {car?.price * daysCount}
-                        </span>
-                    </h5>
-                    <p className={styles.block__text}>
-                        <span>Rental period</span>
-                        <span>
-                            {daysCount}
-                            {daysCount > 1 ? ' days' : ' day'}
-                        </span>
-                    </p>
+                <div className={styles.label_container}>
+                    <BookingInput label='First name' type='text' />
                 </div>
+                <div className={styles.label_container}>
+                    <BookingInput label='Last name' type='text' />
+                </div>
+            </div>
+            <BookingInput label='Phone number' type='tel' />
+            <BookingInput label='Email address' type='email' />
+            <GrayBlock style={{marginBottom: '2.5rem'}}>
+                <PriceOverview car={car} daysCount={daysCount}/>
             </GrayBlock>
             <p className={styles.cancelation}>
                 Free cancelation up to 48h before pick up

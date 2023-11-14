@@ -1,0 +1,25 @@
+.label {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+
+    span {
+        margin-bottom: 1rem;
+    }
+
+    .input {
+        border: none;
+        border-radius: 0;
+        border-bottom: .1rem solid var(--dark_gray);
+        outline: none;
+        height: 2rem;
+        padding: 0 .1rem;
+
+        &:focus {
+            border-bottom: .1rem solid var(--green);
+        }
+
+    }
+}

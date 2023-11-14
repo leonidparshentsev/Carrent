@@ -1,0 +1,24 @@
+.overview__block {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid var(--dark_gray);
+    }
+
+    .block__title {
+        font-size: 1.6rem;
+        line-height: 1.8rem; 
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    .block__text {
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        margin-bottom: .4rem;
+        display: flex;
+        justify-content: space-between;
+    } 
+}

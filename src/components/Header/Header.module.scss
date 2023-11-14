@@ -31,9 +31,14 @@
                 }
 
                 &__item {
+                    border-bottom: .2rem solid transparent;
 
                     &:not(:last-child) {
                         margin-right: 2rem;
+                    }
+
+                    &:hover {
+                        border-bottom: .2rem solid var(--green);
                     }
                 }
             }

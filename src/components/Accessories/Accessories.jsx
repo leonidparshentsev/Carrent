@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Accessories.module.scss'
 import Button from '../UI/Button/Button';
-import AdditionalServices from '../AdditionalService/AdditionalService';
 import AdditionalService from '../AdditionalService/AdditionalService';
+import PriceOverview from '../PriceOverview/PriceOverview';
 
 const benefits = ['Free cancelation up to 24h before', '500km included', 'Insurance included', 'Registration fee / Road tax'];
 
-const Accessories = ({setCurrentStatus}) => {
+const Accessories = ({setCurrentStatus, car, daysCount}) => {
 
     return (
         <div className={styles.accessories}>
@@ -14,7 +14,7 @@ const Accessories = ({setCurrentStatus}) => {
             <div className={styles.benefits}>
                 <h3 className={styles.benefits__title}>
                     <span>The base price</span>
-                    <span>$ 36.12</span>
+                    <span>$ {car.price}</span>
                 </h3>
                 <ul className={styles.benefits__list}>
                     {benefits.map((benefit, index) => {
@@ -31,6 +31,9 @@ const Accessories = ({setCurrentStatus}) => {
                 <AdditionalService serviceName={'crash'} />
                 <AdditionalService serviceName={'theft'}/>
                 <AdditionalService serviceName={'personal'}/>
+            </div>
+            <div className={styles.total__price}>
+                <PriceOverview car={car} daysCount={daysCount}/>
             </div>
             <Button green 
                 onClick={setCurrentStatus}

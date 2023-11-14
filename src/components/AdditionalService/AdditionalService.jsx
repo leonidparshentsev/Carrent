@@ -25,7 +25,7 @@ const AdditionalService = ({serviceName}) => {
             </div>
             <div className={styles.additional_service__status}>
                 <p className={styles.text}>
-                    {!included 
+                    {included 
                     ? 
                     'Included' 
                     : 
