@@ -2,13 +2,13 @@ import React from 'react';
 import styles from './AdditionalService.module.scss'
 
 const serviceStates = {
-    crash: ['/images/svg/safety.svg', 'Crash Protection (CDW)', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum quasi eos dolorum? Soluta, ipsam nesciunt?', true],
-    theft: ['/images/svg/safety.svg', 'Theft Protection (TP)', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.', true],
-    personal: ['/images/svg/safety.svg', 'Personal Protection (PI)', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum quasi eos dolorum? Soluta, ipsam nesciunt?', false],
+    crash: ['/images/svg/safety.svg', 'Crash Protection (CDW)', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum quasi eos dolorum? Soluta, ipsam nesciunt?', ''],
+    theft: ['/images/svg/safety.svg', 'Theft Protection (TP)', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.', ''],
+    personal: ['/images/svg/safety.svg', 'Personal Protection (PI)', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum quasi eos dolorum? Soluta, ipsam nesciunt?', 12],
 }
 
-const AdditionalService = ({serviceName}) => {
-    const [src, title, info, included] = serviceStates[serviceName];
+const AdditionalService = ({serviceName, setAdditionalCost}) => {
+    const [src, title, info, additionalCost] = serviceStates[serviceName];
 
     return (
         <div className={styles.additional_service}>
@@ -25,13 +25,19 @@ const AdditionalService = ({serviceName}) => {
             </div>
             <div className={styles.additional_service__status}>
                 <p className={styles.text}>
-                    {included 
+                    {additionalCost === ''
                     ? 
                     'Included' 
                     : 
                     <>
-                        <span>$ 12</span>
-                        <input type='checkbox'/>
+                        <span>$ {additionalCost}</span>
+                        <input type='checkbox' onChange={(e) => {
+                            if(e.target.checked) {
+                                setAdditionalCost(state => state + additionalCost);
+                            } else {
+                                setAdditionalCost(state => state - additionalCost);
+                            }
+                        }}/>
                     </>
                     }
                 </p>

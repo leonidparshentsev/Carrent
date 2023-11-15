@@ -5,7 +5,7 @@ import Button from '../UI/Button/Button';
 import PriceOverview from '../PriceOverview/PriceOverview';
 import BookingInput from '../UI/BookingInput/BookingInput';
 
-const Payment = ({setCurrentStatus, car, daysCount}) => {
+const Payment = ({setCurrentStatus, car, daysCount, additionalCost}) => {
 
     return (
         <div className={styles.payment}>
@@ -22,7 +22,9 @@ const Payment = ({setCurrentStatus, car, daysCount}) => {
                 </div>
             </div>
             <GrayBlock style={{marginBottom: '2rem'}}>
-                <PriceOverview car={car} daysCount={daysCount}/>
+                <PriceOverview car={car} 
+                    daysCount={daysCount}
+                    additionalCost={additionalCost}/>
             </GrayBlock>
             <Button green
                 style={{width: '80%', alignSelf: 'center'}}

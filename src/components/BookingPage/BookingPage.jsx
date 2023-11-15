@@ -7,19 +7,18 @@ import RentalCondition from '../RentalCondition/RentalCondition';
 import Accessories from '../Accessories/Accessories';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCarId } from '@/reducer/orderSlice';
-// import useInputs from '@/hooks/useInputs';
 import Payment from '../Payment/Payment';
 import useSearchInputs from '@/hooks/useSearchInputs';
 
 const BookingPage = ({params}) => {
-    // 'condition' / 'driver' / 'payment'
-    const [currentStatus, setCurrentStatus] = useState('condition');
+
     const carsList = useSelector(state => state.cars);
     const dispatch = useDispatch();
 
+    // 'condition' / 'driver' / 'payment'
+    const [currentStatus, setCurrentStatus] = useState('condition');
     const [currentCar, setCurrentCar] = useState(carsList[params.id - 1]);
-
-    // const {pickUpTime, dropOffTime} = useInputs();
+    const [additionalCost, setAdditionalCost] = useState(0);
 
     const { globalPickUpTime, globalDropOffTime } = useSearchInputs();
     const daysCount = Math.floor((globalDropOffTime - globalPickUpTime) / ((24*59*60*1000)));
@@ -41,6 +40,8 @@ const BookingPage = ({params}) => {
                         <Accessories 
                             car={currentCar}
                             daysCount={daysCount}
+                            additionalCost={additionalCost}
+                            setAdditionalCost={setAdditionalCost}
                             setCurrentStatus={()=>setCurrentStatus('driver')}/>
                     </>
                     }
@@ -50,6 +51,7 @@ const BookingPage = ({params}) => {
                         <DriverDetails 
                             car={currentCar}
                             daysCount={daysCount}
+                            additionalCost={additionalCost}
                             setCurrentStatus={()=>setCurrentStatus('payment')}/>
                     </>
                     }
@@ -59,6 +61,7 @@ const BookingPage = ({params}) => {
                         <Payment
                             car={currentCar}
                             daysCount={daysCount}
+                            additionalCost={additionalCost}
                             setCurrentStatus={()=>setCurrentStatus('payment')} />
                     </>
                     }   

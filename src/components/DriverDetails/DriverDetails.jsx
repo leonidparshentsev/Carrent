@@ -5,7 +5,7 @@ import Button from '../UI/Button/Button';
 import PriceOverview from '../PriceOverview/PriceOverview';
 import BookingInput from '../UI/BookingInput/BookingInput';
 
-const DriverDetails = ({setCurrentStatus, car, daysCount}) => {
+const DriverDetails = ({setCurrentStatus, car, daysCount, additionalCost}) => {
 
     return (
         <div className={styles.driver_details}>
@@ -21,7 +21,9 @@ const DriverDetails = ({setCurrentStatus, car, daysCount}) => {
             <BookingInput label='Phone number' type='tel' />
             <BookingInput label='Email address' type='email' />
             <GrayBlock style={{marginBottom: '2.5rem'}}>
-                <PriceOverview car={car} daysCount={daysCount}/>
+                <PriceOverview car={car} 
+                    daysCount={daysCount} 
+                    additionalCost={additionalCost}/>
             </GrayBlock>
             <p className={styles.cancelation}>
                 Free cancelation up to 48h before pick up

@@ -6,7 +6,11 @@ import PriceOverview from '../PriceOverview/PriceOverview';
 
 const benefits = ['Free cancelation up to 24h before', '500km included', 'Insurance included', 'Registration fee / Road tax'];
 
-const Accessories = ({setCurrentStatus, car, daysCount}) => {
+const Accessories = ({setCurrentStatus, 
+        car, 
+        daysCount, 
+        additionalCost,
+        setAdditionalCost}) => {
 
     return (
         <div className={styles.accessories}>
@@ -30,10 +34,14 @@ const Accessories = ({setCurrentStatus, car, daysCount}) => {
                 <h3 className={styles.additional__title}>Additional services are recommended</h3>
                 <AdditionalService serviceName={'crash'} />
                 <AdditionalService serviceName={'theft'}/>
-                <AdditionalService serviceName={'personal'}/>
+                <AdditionalService 
+                    serviceName={'personal'} 
+                    setAdditionalCost={setAdditionalCost}/>
             </div>
             <div className={styles.total__price}>
-                <PriceOverview car={car} daysCount={daysCount}/>
+                <PriceOverview car={car} 
+                    daysCount={daysCount} 
+                    additionalCost={additionalCost}/>
             </div>
             <Button green 
                 onClick={setCurrentStatus}
