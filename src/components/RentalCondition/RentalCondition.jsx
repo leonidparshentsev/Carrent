@@ -1,19 +1,19 @@
-// import React, { useEffect, useState } from 'react';
 import styles from './RentalCondition.module.scss'
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
-import useInputs from '@/hooks/useInputs';
+import useSearchInputs from '@/hooks/useSearchInputs';
 
 const RentalCondition = ({car}) => {
-    
-    const {pickUpLoc,
-        pickUpTime,
-        returnLoc,
-        dropOffTime,
-        changePickUpLocHandler,
-        changeReturnLocHandler,
-        changePickUpTimeHandler,
-        changeDropOffHandler} = useInputs();
+
+    const { localPickUpLocation,
+        localDropOffLocation,
+        localPickUpTime,
+        localDropOffTime,
+        setLocalPickUpLocation,
+        setLocalDropOffLocation,
+        setLocalPickUpTime,
+        setLocalDropOffTime,
+        changeGlobalState } = useSearchInputs();
 
     return (
         <div className={styles.rental_condition}>
@@ -29,23 +29,29 @@ const RentalCondition = ({car}) => {
                 <Input border 
                     label='Pick up location' 
                     placeholder='Pick up location'
-                    initialLoc={pickUpLoc}
-                    changeLoc={changePickUpLocHandler}/>
+                    initialLocation={localPickUpLocation}
+                    changeLocation={setLocalPickUpLocation}
+                    />
                 <Input border 
                     label='PICK UP TIME' time
-                    initialDate={pickUpTime}
-                    changeDate={changePickUpTimeHandler}/>
+                    initialDate={localPickUpTime}
+                    changeDate={setLocalPickUpTime}
+                    />
                 <Input border
                     label='Return location' 
                     placeholder='Return location'
-                    initialLoc={returnLoc || pickUpLoc}
-                    changeLoc={changeReturnLocHandler}/>
+                    initialLocation={localDropOffLocation}
+                    changeLocation={setLocalDropOffLocation}
+                    />
                 <Input border 
                     label='DROP OFF TIME' time
-                    initialDate={dropOffTime}
-                    changeDate={changeDropOffHandler}/>
+                    initialDate={localDropOffTime}
+                    changeDate={setLocalDropOffTime} 
+                    />
             </div>
-            <Button green style={{width: '100%'}}>Update</Button>
+            <Button green
+                onClick={changeGlobalState}
+                style={{width: '100%'}}>Update</Button>
         </div>
     );
 };

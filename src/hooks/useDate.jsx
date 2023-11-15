@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useDate = (initialDate) => {
 
@@ -11,7 +11,7 @@ const useDate = (initialDate) => {
         if(month < 10) month = '0' + month;
 
         return `${year}-${month}-${date}`;
-    }
+    };
 
     const readInitialTime = (timestamp) => {
         let hours = new Date(timestamp).getHours();
@@ -24,10 +24,7 @@ const useDate = (initialDate) => {
         }
 
         return `${hours}:${minutes}`;
-    }
-
-    const [dateInput, setDateInput] = useState(readInitialDate(initialDate));
-    const [timeInput, setTimeInput] = useState(readInitialTime(initialDate));
+    };
 
     const setTimeInputHandler = (time) => {
         let [hours, minutes] = time.split(':');
@@ -36,6 +33,15 @@ const useDate = (initialDate) => {
 
         setTimeInput(`${hours}:${minutes}`);
     };
+
+    const [dateInput, setDateInput] = useState(readInitialDate(initialDate));
+    const [timeInput, setTimeInput] = useState(readInitialTime(initialDate));
+
+
+    useEffect(() => {
+        setDateInput(readInitialDate(initialDate));
+        setTimeInput(readInitialTime(initialDate));
+    }, [initialDate]);
 
     return {dateInput,
             setDateInput,

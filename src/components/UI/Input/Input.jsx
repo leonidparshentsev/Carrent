@@ -7,18 +7,16 @@ const Input = ({placeholder,
                 label, 
                 time, 
                 border, 
+                initialDate,
                 changeDate, 
-                changeLoc,
-                initialLoc,
-                initialDate
+                initialLocation,
+                changeLocation,
     }) => {
 
     const {dateInput,
             setDateInput,
             timeInput,
             setTimeInputHandler} = useDate(initialDate);
-
-    const [locInput, setLocInput] = useState(initialLoc);
 
     const onDateChangeHandler = (e) => {
         let currentDate = `${e.target.value}T${timeInput}`;
@@ -31,12 +29,7 @@ const Input = ({placeholder,
         setTimeInputHandler(e.target.value);
         changeDate(new Date(currentDate).getTime());
     }
-
-    const onLocChangeHandler = (e) => {
-        setLocInput(e.target.value);
-        changeLoc(e.target.value);
-    }
-
+    
     return (
         <>
             {time ?
@@ -64,8 +57,8 @@ const Input = ({placeholder,
                 <input
                     type="text"
                     autoComplete='false'
-                    value={locInput}
-                    onChange={onLocChangeHandler}
+                    value={initialLocation}
+                    onChange={(e) => changeLocation(e.target.value)}
                     className={classNames(styles.input__location,styles.input, border && styles.border)}
                     placeholder={placeholder}/>
             </div>

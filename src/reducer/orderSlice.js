@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initial = {
-    pickUpLoc: '',
-    returnLoc: '',
-    pickUpTime: new Date(Date.now() + (24*60*60*1000)).getTime(),
-    dropOffTime: new Date(Date.now() + (24*60*60*1000*2)).getTime(),
     carType: '',
     carId: 1,
+    globalPickUpLocation: '',
+    globalDropOffLocation: '',
+    globalPickUpTime: new Date(Date.now() + (24*60*60*1000)).getTime(), 
+    globalDropOffTime: new Date(Date.now() + (24*60*60*1000*2)).getTime(),
 }
-// console.log(new Date('2023-11-09T14:30').getTime());
 
 export const orderSlice = createSlice({
     name: 'order',
@@ -16,13 +15,18 @@ export const orderSlice = createSlice({
     reducers: {
         setType: (state, action) => {state.carType = action.payload},
         setCarId: (state, action) => {state.carId = action.payload},
-        setPickUpLoc: (state, action) => {state.pickUpLoc = action.payload},
-        setReturnLoc: (state, action) => {state.returnLoc = action.payload},
-        setPickUpTime: (state, action) => {state.pickUpTime = action.payload},
-        setDropOffTime: (state, action) => {state.dropOffTime = action.payload},
+        setGlobalPickUpLocation: (state, action) => {state.globalPickUpLocation = action.payload},
+        setGlobalDropOffLocation: (state, action) => {state.globalDropOffLocation = action.payload},
+        setGlobalPickUpTime: (state, action) => {state.globalPickUpTime = action.payload},
+        setGlobalDropOffTime: (state, action) => {state.globalDropOffTime = action.payload},
     },
 });
 
-export const { setType, setCarId, setPickUpLoc, setReturnLoc, setPickUpTime, setDropOffTime } = orderSlice.actions;
+export const { setType, 
+        setCarId, 
+        setGlobalPickUpLocation, 
+        setGlobalDropOffLocation, 
+        setGlobalPickUpTime, 
+        setGlobalDropOffTime } = orderSlice.actions;
 
 export default orderSlice.reducer;

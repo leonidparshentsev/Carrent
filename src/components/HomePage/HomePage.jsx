@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useReducer } from 'react';
 import styles from './HomePage.module.scss'
 import Button from '../UI/Button/Button';
 import Image from 'next/image';
@@ -8,13 +8,24 @@ import CarBoard from '../UI/CarBoard/CarBoard';
 import Input from '../UI/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { setType } from '@/reducer/orderSlice';
-import Link from 'next/link';
-import useInputs from '@/hooks/useInputs';
+// import Link from 'next/link';
+// import inputReducer from '@/reducer/inputReducer';
+import useSearchInputs from '@/hooks/useSearchInputs';
+import { useRouter } from 'next/navigation';
+
 
 const HomePage = () => {
-
+    const router = useRouter();
     const orderState = useSelector(state => state.order);
     const dispatch = useDispatch();
+
+    const { localPickUpLocation,
+        localPickUpTime,
+        localDropOffTime,
+        setLocalPickUpLocation, 
+        setLocalPickUpTime, 
+        setLocalDropOffTime,
+        changeGlobalState } = useSearchInputs();
 
     const changeCarTypeHandler = (type)=> {
         if(type !== orderState.carType) {
@@ -23,13 +34,6 @@ const HomePage = () => {
             dispatch(setType(''));
         }
     };
-
-    const {pickUpLoc,
-        pickUpTime,
-        dropOffTime,
-        changePickUpLocHandler,
-        changePickUpTimeHandler, 
-        changeDropOffHandler} = useInputs();
 
     return (
         <section className={styles.home}>
@@ -59,30 +63,34 @@ const HomePage = () => {
                             <Input
                                 label='PICK UP & RETURN LOCATION'
                                 placeholder='Pick up & Return location'
-                                initialLoc={pickUpLoc}
-                                changeLoc={changePickUpLocHandler}
+                                initialLocation={localPickUpLocation}
+                                changeLocation={setLocalPickUpLocation}
                                 />
                         </div>
                         <div className={styles.search__time}>
                             <div className={styles.wrapper}>
                                 <Input label='PICK UP TIME' time
-                                    initialDate={pickUpTime}
-                                    changeDate={changePickUpTimeHandler} />
+                                    initialDate={localPickUpTime}
+                                    changeDate={setLocalPickUpTime}
+                                    />
                             </div>
                             <div className={styles.wrapper}>
                                 <Input label='DROP OFF TIME' time
-                                    initialDate={dropOffTime}
-                                    changeDate={changeDropOffHandler} />
+                                    initialDate={localDropOffTime}
+                                    changeDate={setLocalDropOffTime}
+                                    />
                             </div>
                         </div>
-                        <Link href='cars' className={styles.link}>
-                            <Button green
-                                style={{
-                                    padding: '1rem 4rem',
-                                    alignSelf: 'start'
-                                }}
-                            >Search</Button>
-                        </Link>
+                        <Button green
+                            onClick={() => {
+                                changeGlobalState();
+                                router.push('/cars');
+                            }}
+                            style={{
+                                padding: '1rem 4rem',
+                                alignSelf: 'start'
+                            }}
+                        >Search</Button>
                     </div>
                 </div>
             </div>

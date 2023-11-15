@@ -7,8 +7,9 @@ import RentalCondition from '../RentalCondition/RentalCondition';
 import Accessories from '../Accessories/Accessories';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCarId } from '@/reducer/orderSlice';
-import useInputs from '@/hooks/useInputs';
+// import useInputs from '@/hooks/useInputs';
 import Payment from '../Payment/Payment';
+import useSearchInputs from '@/hooks/useSearchInputs';
 
 const BookingPage = ({params}) => {
     // 'condition' / 'driver' / 'payment'
@@ -18,8 +19,10 @@ const BookingPage = ({params}) => {
 
     const [currentCar, setCurrentCar] = useState(carsList[params.id - 1]);
 
-    const {pickUpTime, dropOffTime} = useInputs();
-    const daysCount = Math.floor((dropOffTime - pickUpTime) / ((24*59*60*1000)));
+    // const {pickUpTime, dropOffTime} = useInputs();
+
+    const { globalPickUpTime, globalDropOffTime } = useSearchInputs();
+    const daysCount = Math.floor((globalDropOffTime - globalPickUpTime) / ((24*59*60*1000)));
 
     useEffect(() => {
         setCurrentCar(carsList[params.id - 1]);
@@ -57,9 +60,6 @@ const BookingPage = ({params}) => {
                             car={currentCar}
                             daysCount={daysCount}
                             setCurrentStatus={()=>setCurrentStatus('payment')} />
-                        {/* <DriverDetails
-                            car={currentCar}
-                            setCurrentStatus={()=>setCurrentStatus('payment')}/> */}
                     </>
                     }   
                 </div>

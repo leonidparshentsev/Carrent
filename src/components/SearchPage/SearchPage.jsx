@@ -2,19 +2,19 @@ import React from 'react';
 import styles from './SearchPage.module.scss'
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-// import { useSelector } from 'react-redux';
-import useInputs from '@/hooks/useInputs';
+import useSearchInputs from '@/hooks/useSearchInputs';
 
 const SearchPage = () => {
 
-    const {pickUpLoc,
-            pickUpTime,
-            returnLoc,
-            dropOffTime,
-            changePickUpLocHandler,
-            changeReturnLocHandler,
-            changePickUpTimeHandler,
-            changeDropOffHandler} = useInputs();
+    const { localPickUpLocation,
+        localDropOffLocation,
+        localPickUpTime,
+        localDropOffTime,
+        setLocalPickUpLocation, 
+        setLocalDropOffLocation, 
+        setLocalPickUpTime, 
+        setLocalDropOffTime,
+        changeGlobalState } = useSearchInputs();
 
     return (
         <section className={styles.search}>
@@ -23,23 +23,25 @@ const SearchPage = () => {
                     <div className={styles.inputs}>
                         <Input label='Pick up location' 
                             placeholder='Pick up location'
-                            initialLoc={pickUpLoc}
-                            changeLoc={changePickUpLocHandler}
+                            initialLocation={localPickUpLocation}
+                            changeLocation={setLocalPickUpLocation}
                             />
                         <Input label='PICK UP TIME' time
-                            initialDate={pickUpTime}
-                            changeDate={changePickUpTimeHandler}/>
+                            initialDate={localPickUpTime}
+                            changeDate={setLocalPickUpTime}
+                            />
                         <Input label='Return location' 
                             placeholder='Return location'
-                            initialLoc={returnLoc || pickUpLoc}
-                            changeLoc={changeReturnLocHandler}
+                            initialLocation={localDropOffLocation}
+                            changeLocation={setLocalDropOffLocation}
                             />
                         <Input label='DROP OFF TIME' time
-                            initialDate={dropOffTime}
-                            changeDate={changeDropOffHandler}/>
+                            initialDate={localDropOffTime}
+                            changeDate={setLocalDropOffTime} 
+                            />
                     </div>
                     <div className={styles.button}>
-                        <Button green>Search</Button>
+                        <Button green onClick={changeGlobalState}>Search</Button>
                     </div>
                 </div>
             </div>
