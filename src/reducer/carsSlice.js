@@ -25,6 +25,7 @@ export const carsSlice = createSlice({
         filterByTransmission: (state, action) => {
             state = [...initial.cars];
 
+            // Если другие селекторы не в дефолтном положении применяем их
             if(action.payload.selectState.seats !== 'default') {
                 state = state.filter(car => car.seats === action.payload.selectState.seats);
             }

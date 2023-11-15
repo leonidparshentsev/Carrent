@@ -5,18 +5,17 @@ import Link from 'next/link';
 import ModelCard from '../ModelCard/ModelCard';
 import Carousel from '../UI/Carousel/Carousel';
 import { useSelector } from 'react-redux';
+import initial from '../../../public/DB.json'
 
 const PopularPage = () => {
-    const carsList = useSelector(state => state.cars);
 
     const [activeCarType, setActiveCarType] = useState('sedan');
     const [popularCars, setPopularCars] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        setPopularCars([...carsList.filter((car) => car.type === activeCarType)])
+        setPopularCars([...initial.cars.filter((car) => car.type === activeCarType)])
     }, [activeCarType]);
-
 
     return (
         <section className={styles.popular}>
