@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import styles from './Input.module.scss'
 import classNames from 'classnames';
 import useDate from '@/hooks/useDate';
@@ -6,7 +6,8 @@ import useDate from '@/hooks/useDate';
 const Input = ({placeholder, 
                 label, 
                 time, 
-                border, 
+                border,
+                invalid, 
                 initialDate,
                 changeDate, 
                 initialLocation,
@@ -29,6 +30,27 @@ const Input = ({placeholder,
         setTimeInputHandler(e.target.value);
         changeDate(new Date(currentDate).getTime());
     }
+
+    const locationInputClass = classNames(
+        styles.input__location,
+        styles.input,
+        border && styles.border,
+        invalid && styles.border_invalid,
+    );
+
+    const dateInputClass = classNames(
+        styles.inputs__date, 
+        styles.input, 
+        border && styles.border,
+        invalid && styles.border_invalid,
+    );
+
+    const timeInputClass = classNames(
+        styles.inputs__time, 
+        styles.input, 
+        border && styles.border,
+        invalid && styles.border_invalid,
+    );
     
     return (
         <>
@@ -40,13 +62,13 @@ const Input = ({placeholder,
                         type="date"
                         value={dateInput}
                         onChange={onDateChangeHandler}
-                        className={classNames(styles.inputs__date, styles.input, border && styles.border)}
+                        className={dateInputClass}
                         />
                     <input
                         type="time"
                         value={timeInput}
                         onChange={onTimeChangeHandler}
-                        className={classNames(styles.inputs__time, styles.input, border && styles.border)}
+                        className={timeInputClass}
                         />
                 </div>
             </div>
@@ -59,7 +81,7 @@ const Input = ({placeholder,
                     autoComplete='false'
                     value={initialLocation}
                     onChange={(e) => changeLocation(e.target.value)}
-                    className={classNames(styles.input__location,styles.input, border && styles.border)}
+                    className={locationInputClass}
                     placeholder={placeholder}/>
             </div>
             )}

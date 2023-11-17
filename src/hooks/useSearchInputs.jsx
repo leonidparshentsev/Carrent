@@ -1,6 +1,6 @@
 // В глобальном состоянии инпутов храним данные, которые берем из локального состояния, в случае если пользователь нажал кнопку поиска.
 
-import inputReducer from "@/reducer/inputReducer";
+import searchInputReducer from "@/reducer/searchInputReducer";
 import { setGlobalDropOffLocation, setGlobalDropOffTime, setGlobalPickUpLocation, setGlobalPickUpTime } from "@/reducer/orderSlice";
 import { useCallback, useEffect, useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +14,7 @@ const reducerInitial = {
 
 const useSearchInputs = () => {
 
-    const [inputState, inputDispatch] = useReducer(inputReducer, reducerInitial);
+    const [inputState, inputDispatch] = useReducer(searchInputReducer, reducerInitial);
 
     const localPickUpLocation = inputState.pickUpLocation;
     const localDropOffLocation = inputState.dropOffLocation;
@@ -57,6 +57,14 @@ const useSearchInputs = () => {
         changeGlobalDropOffTime(localDropOffTime);
     }, [localPickUpLocation, localPickUpTime, localDropOffLocation, localDropOffTime]);
 
+
+    const checkIsEmptyGlobalState = useCallback(() => {
+
+        if(!globalPickUpLocation || !globalDropOffLocation) return true;
+
+        return false;
+    }, [globalPickUpLocation, globalDropOffLocation]);
+
     // На случай, если глобальное состояние инпутов задано - обновляем локальное состояние.
     useEffect(() => {
         if(globalPickUpLocation !== '') {
@@ -92,7 +100,8 @@ const useSearchInputs = () => {
         setLocalDropOffTime,
         globalPickUpTime,
         globalDropOffTime,
-        changeGlobalState };
+        changeGlobalState,
+        checkIsEmptyGlobalState };
 };
 
 export default useSearchInputs;

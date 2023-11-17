@@ -4,22 +4,60 @@ import GrayBlock from '../UI/GrayBlock/GrayBlock';
 import Button from '../UI/Button/Button';
 import PriceOverview from '../PriceOverview/PriceOverview';
 import BookingInput from '../UI/BookingInput/BookingInput';
+import useOrderInput from '@/hooks/useOrderInput';
 
-const DriverDetails = ({setCurrentStatus, car, daysCount, additionalCost}) => {
+const DriverDetails = ({setCurrentStatus, 
+        car, 
+        daysCount, 
+        additionalCost, 
+        isInputIncorrect}) => {
+
+    const { firstName,
+        lastName, 
+        phoneNumber, 
+        email,
+        setFirstName,
+        setLastName, 
+        setPhoneNumber,
+        setEmail,
+        checkDriverInputsIsEmpty } = useOrderInput();
 
     return (
         <div className={styles.driver_details}>
             <h2 className={styles.main_title}>Driver details</h2>
+            {
+                isInputIncorrect && (
+                    <p className={styles.invalid_message}>
+                        It is necessary to fill in all fields
+                    </p>
+                )
+            }
             <div className={styles.name}>
                 <div className={styles.label_container}>
-                    <BookingInput label='First name' type='text' />
+                    <BookingInput label='First name' type='text'
+                        invalid={isInputIncorrect}
+                        value={firstName} 
+                        setValue={setFirstName} 
+                        />
                 </div>
                 <div className={styles.label_container}>
-                    <BookingInput label='Last name' type='text' />
+                    <BookingInput label='Last name' type='text'
+                        invalid={isInputIncorrect}
+                        value={lastName} 
+                        setValue={setLastName}
+                        />
                 </div>
             </div>
-            <BookingInput label='Phone number' type='tel' />
-            <BookingInput label='Email address' type='email' />
+            <BookingInput label='Phone number' type='tel' 
+                invalid={isInputIncorrect}
+                value={phoneNumber} 
+                setValue={setPhoneNumber}
+                />
+            <BookingInput label='Email address' type='email' 
+                invalid={isInputIncorrect}
+                value={email} 
+                setValue={setEmail}
+                />
             <GrayBlock style={{marginBottom: '2.5rem'}}>
                 <PriceOverview car={car} 
                     daysCount={daysCount} 
@@ -30,7 +68,13 @@ const DriverDetails = ({setCurrentStatus, car, daysCount, additionalCost}) => {
             </p>
             <Button green
                 style={{width: '80%', alignSelf: 'center'}}
-                onClick={setCurrentStatus}>Confirm</Button>
+                onClick={() => {
+                    if(checkDriverInputsIsEmpty()) {
+                        setCurrentStatus(true);
+                    } else {
+                        setCurrentStatus(false);
+                    }
+                }}>Confirm</Button>
         </div>
     );
 };

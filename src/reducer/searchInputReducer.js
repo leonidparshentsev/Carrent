@@ -1,6 +1,6 @@
 // редьюсер для локального контроля над поисковыми инпутами.
 
-const inputReducer = (state, action) => {
+const searchInputReducer = (state, action) => {
     switch(action.type) {
         case 'SET_PICKUP_LOCATION': 
             return {...state, pickUpLocation: action.payload};
@@ -15,4 +15,4 @@ const inputReducer = (state, action) => {
     }
 }
 
-export default inputReducer;
+export default searchInputReducer;

@@ -19,8 +19,9 @@ const BookingPage = ({params}) => {
     const [currentStatus, setCurrentStatus] = useState('condition');
     const [currentCar, setCurrentCar] = useState(carsList[params.id - 1]);
     const [additionalCost, setAdditionalCost] = useState(0);
+    const [isInputIncorrect, setInputIncorrect] = useState(false);
 
-    const { globalPickUpTime, globalDropOffTime } = useSearchInputs();
+    const { globalPickUpTime, globalDropOffTime, checkIsEmptyGlobalState } = useSearchInputs();
     const daysCount = Math.floor((globalDropOffTime - globalPickUpTime) / ((24*59*60*1000)));
 
     useEffect(() => {
@@ -36,13 +37,25 @@ const BookingPage = ({params}) => {
                 <div className={styles.content}>
                     {currentStatus === 'condition' &&
                     <>
-                        <RentalCondition car={currentCar}/>
+                        <RentalCondition 
+                            car={currentCar}
+                            isInputIncorrect={isInputIncorrect}/>
                         <Accessories 
                             car={currentCar}
                             daysCount={daysCount}
                             additionalCost={additionalCost}
                             setAdditionalCost={setAdditionalCost}
-                            setCurrentStatus={()=>setCurrentStatus('driver')}/>
+                            setCurrentStatus={() => {
+                                if(checkIsEmptyGlobalState()) {
+                                    setInputIncorrect(true);
+
+                                    setTimeout(() => {
+                                        setInputIncorrect(false);
+                                    }, 3000);
+                                    return;
+                                }
+                                setCurrentStatus('driver')
+                            }}/>
                     </>
                     }
                     {currentStatus === 'driver' &&
@@ -52,7 +65,18 @@ const BookingPage = ({params}) => {
                             car={currentCar}
                             daysCount={daysCount}
                             additionalCost={additionalCost}
-                            setCurrentStatus={()=>setCurrentStatus('payment')}/>
+                            isInputIncorrect={isInputIncorrect}
+                            setCurrentStatus={(isIncorrect) => {
+                                if(isIncorrect) {
+                                    setInputIncorrect(true);
+
+                                    setTimeout(() => {
+                                        setInputIncorrect(false);
+                                    }, 3000);
+                                    return;
+                                }
+                                setCurrentStatus('payment');
+                            }}/>
                     </>
                     }
                     {currentStatus === 'payment' &&
@@ -62,7 +86,18 @@ const BookingPage = ({params}) => {
                             car={currentCar}
                             daysCount={daysCount}
                             additionalCost={additionalCost}
-                            setCurrentStatus={()=>setCurrentStatus('payment')} />
+                            isInputIncorrect={isInputIncorrect}
+                            setCurrentStatus={(isIncorrect) => {
+                                if(isIncorrect) {
+                                    setInputIncorrect(true);
+
+                                    setTimeout(() => {
+                                        setInputIncorrect(false);
+                                    }, 3000);
+                                    return;
+                                }
+                                setCurrentStatus('payment');
+                            }}/>
                     </>
                     }   
                 </div>

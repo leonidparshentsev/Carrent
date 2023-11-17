@@ -1,4 +1,5 @@
 .driver_details {
+    position: relative;
     flex: 0 0 50rem;
     display: flex;
     flex-direction: column;
@@ -9,6 +10,14 @@
         font-weight: 400;
         letter-spacing: .1rem;
         margin-bottom: 3rem;
+    }
+
+    .invalid_message {
+        position: absolute;
+        top: 5rem;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        color: var(--red);
     }
 
     .name {
@@ -23,32 +32,6 @@
             margin-right: 2rem;
         }
     }
-
-    // .label {
-    //     font-size: 1.2rem;
-    //     line-height: 1.4rem;
-    //     display: flex;
-    //     flex-direction: column;
-    //     margin-bottom: 3rem;
-
-    //     span {
-    //         margin-bottom: 1rem;
-    //     }
-
-    //     .input {
-    //         border: none;
-    //         border-radius: 0;
-    //         border-bottom: .1rem solid var(--dark_gray);
-    //         outline: none;
-    //         height: 2rem;
-    //         padding: 0 .1rem;
-
-    //         &:focus {
-    //             border-bottom: .1rem solid var(--green);
-    //         }
-
-    //     }
-    // }
 
     .cancelation {
         margin-bottom: 2.5rem;

@@ -21,5 +21,9 @@
             border-bottom: .1rem solid var(--green);
         }
 
+        &_invalid {
+            border-bottom: .1rem solid var(--red);
+        }
+
     }
 }

@@ -29,6 +29,10 @@
 
     &.border {
         border: 1px solid var(--dark_gray);
+
+        &_invalid {
+            border: 1px solid var(--red);
+        }
     }
 }
 
