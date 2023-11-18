@@ -37,11 +37,13 @@
         }
 
         &.done {
-            background-color: var(--green);
+            background: var(--green) no-repeat url('/images/svg/check-mark.svg') .4rem;
+            background-size: 1.2rem;
 
             .circle__inner {
-                background-color: var(--green);
+                background-color: transparent;
             }
+
         }
 
         &__inner {

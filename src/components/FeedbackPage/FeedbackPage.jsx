@@ -20,7 +20,7 @@ const FeedbackPage = () => {
                             <span>Thousands of Happy People</span><br />
                             Using Our Product
                         </h2>
-                        <div className={styles.profile}>
+                        <div className={styles.profile} key={currentPage}>
                             <div className={styles.profile__photo}>
                                 <img src={testimotionals[currentPage - 1].imageUrl} alt="Customer"/>
                             </div>

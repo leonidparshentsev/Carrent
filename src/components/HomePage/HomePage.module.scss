@@ -30,6 +30,23 @@
                     width: 100%;
                     min-width: 43rem;
                     height: 28.5rem;
+
+                    animation: speedInLeft .7s ease-out;
+                }
+
+
+                @keyframes speedInLeft {
+                    0% {
+                        transform: translateX(-50rem) rotate(-5deg);
+                    }
+
+                    60% {
+                        transform: translateX(-2rem) rotate(2deg);
+                    }
+
+                    100% {
+                        transform: translateX(0) rotate(0deg);
+                    }
                 }
             }
 

@@ -24,7 +24,9 @@ const ModelCard = ({car}) => {
     return (
         <div className={styles.model__card}>
             <div className={styles.model__image}>
-                <img src={`./images/models/${car.type}/${car.model}.png`} alt="Popular model" />
+                <img 
+                    src={`./images/models/${car.type}/${car.model}.png`} 
+                    alt="Popular model" />
             </div>
             <h4 className={styles.model__title}>{car.model}</h4>
             <p className={styles.model__price}>

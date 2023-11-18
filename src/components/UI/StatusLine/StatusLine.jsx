@@ -18,12 +18,13 @@ const StatusLine = ({status}) => {
     const driverStyle = (status === 'condition') 
         && circleStyle.default 
         || (status === 'driver') && circleStyle.active 
-        || (status === 'payment') && circleStyle.done;
+        || (status === 'payment' || status === 'payment-done') && circleStyle.done;
 
-    const seconLineStyle = (status === 'payment') && styles.active;
+    const secondLineStyle = (status === 'payment' || status === 'payment-done') && styles.active;
 
-    const paymenStyle = status === 'payment' ? 
-        circleStyle.active : circleStyle.default;
+    const paymentStyle = (status === 'payment') ? 
+        circleStyle.active : (status === 'payment-done') ? 
+        circleStyle.done : circleStyle.default;
 
     return (
         <div className={styles.container}>
@@ -43,10 +44,10 @@ const StatusLine = ({status}) => {
                 <p className={styles.text}>Driver details</p>
             </div>
 
-            <div className={classNames(styles.line, seconLineStyle)}></div>
+            <div className={classNames(styles.line, secondLineStyle)}></div>
 
             <div className={styles.status_point}>
-                <div className={paymenStyle}>
+                <div className={paymentStyle}>
                     <div className={styles.circle__inner}></div>
                 </div>
                 <p className={styles.text}>Payment</p>

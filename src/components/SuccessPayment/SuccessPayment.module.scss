@@ -1,0 +1,60 @@
+.success_page {
+    display: flex;
+    flex-direction: column;
+    
+    .main_title {
+        font-size: 2.2rem;
+        font-weight: 400;
+        letter-spacing: .1rem;
+        margin-bottom: 4rem;
+    }
+
+    .animation {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        
+        .svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .circle {
+            position: relative;
+            width: 8rem;
+            height: 8rem;
+            margin-bottom: 4rem;
+
+            fill: transparent;
+            stroke: var(--green);
+            stroke-width: 6;
+            transform: rotate(45deg);
+            stroke-dasharray: 628, 0;
+            animation: progress .8s linear forwards;
+        }
+
+        .svg_check_mark {
+            position: absolute;
+            top: 2rem;
+
+            path {
+                fill: white;
+            }
+        }
+        
+        @keyframes progress {
+            99% {
+                stroke-dasharray: 0, 628;
+                transform: rotate(-90deg);
+                fill: none;
+            }
+
+            100% {
+                fill: var(--green);
+            }
+        }
+    }
+}

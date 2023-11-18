@@ -3,6 +3,7 @@ import styles from './Accessories.module.scss'
 import Button from '../UI/Button/Button';
 import AdditionalService from '../AdditionalService/AdditionalService';
 import PriceOverview from '../PriceOverview/PriceOverview';
+import useSearchInputs from '@/hooks/useSearchInputs';
 
 const benefits = ['Free cancelation up to 24h before', '500km included', 'Insurance included', 'Registration fee / Road tax'];
 
@@ -11,6 +12,8 @@ const Accessories = ({setCurrentStatus,
         daysCount, 
         additionalCost,
         setAdditionalCost}) => {
+
+        const { checkIsEmptyGlobalState } = useSearchInputs();
 
     return (
         <div className={styles.accessories}>
@@ -44,9 +47,14 @@ const Accessories = ({setCurrentStatus,
                     additionalCost={additionalCost}/>
             </div>
             <Button green 
-                onClick={setCurrentStatus}
                 style={{width: '80%', alignSelf: 'center'}}
-                >Confirm</Button>
+                onClick={() => {
+                    if(checkIsEmptyGlobalState()) {
+                        setCurrentStatus(true);
+                    } else {
+                        setCurrentStatus(false);
+                    }
+                }}>Confirm</Button>
         </div>
     );
 };

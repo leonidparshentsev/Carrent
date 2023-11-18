@@ -9,25 +9,38 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCarId } from '@/reducer/orderSlice';
 import Payment from '../Payment/Payment';
 import useSearchInputs from '@/hooks/useSearchInputs';
+import SuccessPayment from '../SuccessPayment/SuccessPayment';
 
 const BookingPage = ({params}) => {
 
     const carsList = useSelector(state => state.cars);
     const dispatch = useDispatch();
 
-    // 'condition' / 'driver' / 'payment'
+    // 'condition' / 'driver' / 'payment' / 'payment-done'
     const [currentStatus, setCurrentStatus] = useState('condition');
     const [currentCar, setCurrentCar] = useState(carsList[params.id - 1]);
     const [additionalCost, setAdditionalCost] = useState(0);
     const [isInputIncorrect, setInputIncorrect] = useState(false);
 
-    const { globalPickUpTime, globalDropOffTime, checkIsEmptyGlobalState } = useSearchInputs();
+    const { globalPickUpTime, globalDropOffTime } = useSearchInputs();
     const daysCount = Math.floor((globalDropOffTime - globalPickUpTime) / ((24*59*60*1000)));
 
     useEffect(() => {
         setCurrentCar(carsList[params.id - 1]);
         dispatch(setCarId(params.id));
     }, [carsList])
+
+    const markInvalidInputs = (isIncorrect) => {
+        if(isIncorrect) {
+            setInputIncorrect(true);
+
+            setTimeout(() => {
+                setInputIncorrect(false);
+            }, 3000);
+            return true;
+        }
+        return false;
+    };
 
     return (
         <>
@@ -45,16 +58,10 @@ const BookingPage = ({params}) => {
                             daysCount={daysCount}
                             additionalCost={additionalCost}
                             setAdditionalCost={setAdditionalCost}
-                            setCurrentStatus={() => {
-                                if(checkIsEmptyGlobalState()) {
-                                    setInputIncorrect(true);
-
-                                    setTimeout(() => {
-                                        setInputIncorrect(false);
-                                    }, 3000);
-                                    return;
+                            setCurrentStatus={(isIncorrect) => {
+                                if(!markInvalidInputs(isIncorrect)) {
+                                    setCurrentStatus('driver')
                                 }
-                                setCurrentStatus('driver')
                             }}/>
                     </>
                     }
@@ -67,15 +74,9 @@ const BookingPage = ({params}) => {
                             additionalCost={additionalCost}
                             isInputIncorrect={isInputIncorrect}
                             setCurrentStatus={(isIncorrect) => {
-                                if(isIncorrect) {
-                                    setInputIncorrect(true);
-
-                                    setTimeout(() => {
-                                        setInputIncorrect(false);
-                                    }, 3000);
-                                    return;
+                                if(!markInvalidInputs(isIncorrect)) {
+                                    setCurrentStatus('payment')
                                 }
-                                setCurrentStatus('payment');
                             }}/>
                     </>
                     }
@@ -88,17 +89,14 @@ const BookingPage = ({params}) => {
                             additionalCost={additionalCost}
                             isInputIncorrect={isInputIncorrect}
                             setCurrentStatus={(isIncorrect) => {
-                                if(isIncorrect) {
-                                    setInputIncorrect(true);
-
-                                    setTimeout(() => {
-                                        setInputIncorrect(false);
-                                    }, 3000);
-                                    return;
+                                if(!markInvalidInputs(isIncorrect)) {
+                                    setCurrentStatus('payment-done')
                                 }
-                                setCurrentStatus('payment');
                             }}/>
                     </>
+                    }
+                    {currentStatus === 'payment-done' &&
+                        <SuccessPayment/>
                     }   
                 </div>
             </div>

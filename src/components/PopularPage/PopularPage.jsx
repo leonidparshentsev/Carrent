@@ -51,10 +51,11 @@ const PopularPage = () => {
                             popularCars.map((car, index) => {
                                 if((index >= (currentPage * 3) - 3) 
                                     && index < (currentPage * 3)) {
-                                        return <ModelCard key={car.id} 
-                                                car={car}/>
+                                        return <ModelCard 
+                                                    key={car.id} 
+                                                    car={car}/>
                                 }
-                            }) : <ModelCard car={{}}/>}
+                            }) : <ModelCard key={0} car={{}}/>}
                         </div>
                     </div>
                 </div>

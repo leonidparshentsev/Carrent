@@ -8,8 +8,6 @@ import CarBoard from '../UI/CarBoard/CarBoard';
 import Input from '../UI/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { setType } from '@/reducer/orderSlice';
-// import Link from 'next/link';
-// import inputReducer from '@/reducer/inputReducer';
 import useSearchInputs from '@/hooks/useSearchInputs';
 import { useRouter } from 'next/navigation';
 

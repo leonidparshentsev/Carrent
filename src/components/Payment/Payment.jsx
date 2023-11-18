@@ -28,21 +28,21 @@ const Payment = ({setCurrentStatus, car, daysCount, additionalCost, isInputIncor
             }
             <div className={styles.payment__block}>
                 <BookingInput label='Card number' type='number'
-                    invalid={isInputIncorrect}
+                    invalid={isInputIncorrect && !cardNumber}
                     value={cardNumber}
                     setValue={setCardNumber}
                     />
                 <div className={styles.card_info}>
                     <div className={styles.label_container}>
                         <BookingInput label='Expiration date' type='number' 
-                            invalid={isInputIncorrect}
+                            invalid={isInputIncorrect && !cardDate}
                             value={cardDate}
                             setValue={setCardDate}
                             />
                     </div>
                     <div className={styles.label_container}>
                         <BookingInput label='CVC' type='password' 
-                            invalid={isInputIncorrect}
+                            invalid={isInputIncorrect && !cardCvc}
                             value={cardCvc}
                             setValue={setCardCvc}
                             />

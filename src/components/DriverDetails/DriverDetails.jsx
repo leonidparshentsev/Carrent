@@ -35,26 +35,26 @@ const DriverDetails = ({setCurrentStatus,
             <div className={styles.name}>
                 <div className={styles.label_container}>
                     <BookingInput label='First name' type='text'
-                        invalid={isInputIncorrect}
+                        invalid={isInputIncorrect && !firstName}
                         value={firstName} 
                         setValue={setFirstName} 
                         />
                 </div>
                 <div className={styles.label_container}>
                     <BookingInput label='Last name' type='text'
-                        invalid={isInputIncorrect}
+                        invalid={isInputIncorrect && !lastName}
                         value={lastName} 
                         setValue={setLastName}
                         />
                 </div>
             </div>
             <BookingInput label='Phone number' type='tel' 
-                invalid={isInputIncorrect}
+                invalid={isInputIncorrect && !phoneNumber}
                 value={phoneNumber} 
                 setValue={setPhoneNumber}
                 />
             <BookingInput label='Email address' type='email' 
-                invalid={isInputIncorrect}
+                invalid={isInputIncorrect && !email}
                 value={email} 
                 setValue={setEmail}
                 />
