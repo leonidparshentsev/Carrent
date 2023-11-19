@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import styles from './BookingPage.module.scss'
 import Status from '../Status/Status';
 import SelectedCar from '../SelectedCar/SelectedCar';
@@ -10,6 +10,7 @@ import { setCarId } from '@/reducer/orderSlice';
 import Payment from '../Payment/Payment';
 import useSearchInputs from '@/hooks/useSearchInputs';
 import SuccessPayment from '../SuccessPayment/SuccessPayment';
+import useScrollTo from '@/hooks/useScrollTo';
 
 const BookingPage = ({params}) => {
 
@@ -24,6 +25,7 @@ const BookingPage = ({params}) => {
 
     const { globalPickUpTime, globalDropOffTime } = useSearchInputs();
     const daysCount = Math.floor((globalDropOffTime - globalPickUpTime) / ((24*59*60*1000)));
+    const [ref, scrollToRef] = useScrollTo();
 
     useEffect(() => {
         setCurrentCar(carsList[params.id - 1]);
@@ -43,7 +45,7 @@ const BookingPage = ({params}) => {
     };
 
     return (
-        <>
+        <div ref={ref}>
         <Status status={currentStatus}/>
         <section className={styles.booking}>
             <div className={styles.container}>
@@ -60,7 +62,8 @@ const BookingPage = ({params}) => {
                             setAdditionalCost={setAdditionalCost}
                             setCurrentStatus={(isIncorrect) => {
                                 if(!markInvalidInputs(isIncorrect)) {
-                                    setCurrentStatus('driver')
+                                    scrollToRef();
+                                    setCurrentStatus('driver');
                                 }
                             }}/>
                     </>
@@ -75,7 +78,8 @@ const BookingPage = ({params}) => {
                             isInputIncorrect={isInputIncorrect}
                             setCurrentStatus={(isIncorrect) => {
                                 if(!markInvalidInputs(isIncorrect)) {
-                                    setCurrentStatus('payment')
+                                    setCurrentStatus('payment');
+                                    scrollToRef();
                                 }
                             }}/>
                     </>
@@ -90,7 +94,8 @@ const BookingPage = ({params}) => {
                             isInputIncorrect={isInputIncorrect}
                             setCurrentStatus={(isIncorrect) => {
                                 if(!markInvalidInputs(isIncorrect)) {
-                                    setCurrentStatus('payment-done')
+                                    setCurrentStatus('payment-done');
+                                    scrollToRef();
                                 }
                             }}/>
                     </>
@@ -101,7 +106,7 @@ const BookingPage = ({params}) => {
                 </div>
             </div>
         </section>
-        </>
+        </div>
     );
 };
 

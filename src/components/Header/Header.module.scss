@@ -24,7 +24,6 @@
             .nav {
                 flex-grow: 1;
 
-
                 &__list {
                     display: flex;
                     margin-right: 4rem;
@@ -39,6 +38,10 @@
 
                     &:hover {
                         border-bottom: .2rem solid var(--green);
+                    }
+
+                    &:active {
+                        border-bottom: .2rem solid darken($color: #38BC55, $amount: 10%);
                     }
                 }
             }

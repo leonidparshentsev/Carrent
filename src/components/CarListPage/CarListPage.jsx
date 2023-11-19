@@ -37,7 +37,8 @@ const CarListPage = () => {
     const [ref, scrollToRef] = useScrollTo();
 
     return (
-        <section className={styles.car_list} ref={ref}>
+        <section className={styles.car_list} 
+            ref={ref}>
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.header}>
