@@ -19,7 +19,9 @@ const Header = () => {
                             <li className={styles.nav__item}>
                                 <Link href="/services">Services</Link>
                             </li>
-                            <li className={styles.nav__item}>About Us</li>
+                            <li className={styles.nav__item}>
+                                <Link href='/about'>About Us</Link>
+                            </li>
                         </ul>
                     </nav>
                     <Link href='/#getapp'>

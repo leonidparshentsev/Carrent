@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.scss'
+import Link from 'next/link';
 
 const Footer = () => {
     return (
@@ -21,8 +22,12 @@ const Footer = () => {
                     <p className={styles.copyright}>Copyright 2023</p>
                     <p className={styles.copyright}>All rights reserved</p>
                     <ul className={styles.links__list}>
-                        <li className={styles.links}>About us</li>
-                        <li className={styles.links}>Reviews</li>
+                        <li className={styles.links}>
+                            <Link href='/about'>About Us</Link>
+                        </li>
+                        <li className={styles.links}>
+                            <Link href='/#feedback'>Reviews</Link>
+                        </li>
                         <li className={styles.links}>Support</li>
                     </ul>
                 </div>

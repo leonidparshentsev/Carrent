@@ -7,7 +7,7 @@ const FeedbackPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     return (
-        <section className={styles.feedback}>
+        <section className={styles.feedback} id='feedback'>
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.feedback__carousel}>
