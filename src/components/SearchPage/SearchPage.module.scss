@@ -15,6 +15,16 @@
                 justify-content: space-between;
                 font-size: 1.6rem;
                 margin-bottom: 2rem;
+
+                div {
+                    &:nth-child(even) {
+                        min-width: 24.5rem;
+                    }
+
+                    &:not(:last-child) {
+                        margin-right: 1rem;
+                    }
+                }
             }
 
             .button {
