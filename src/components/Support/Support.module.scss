@@ -1,0 +1,108 @@
+.support {
+
+    .container {
+        margin: 0 auto;
+        max-width: 100rem;
+        padding: 6rem 3rem 0;
+    
+        .content {
+            display: flex;
+            flex-direction: column;
+
+            &__top {
+                display: flex;
+                margin-bottom: 2rem;
+
+                .top__left {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 0 65%;
+                    margin-right: 2rem;
+    
+                    .main__title {
+                        font-size: 4rem;
+                        line-height: 5rem;
+                        font-weight: 600;
+                        margin-bottom: 2.5rem;
+                    }
+        
+                    .text {
+                        flex-grow: 1;
+                        width: 75%;
+                        font-size: 1.6rem;
+                        line-height: 1.8rem;
+                        margin-bottom: 2.5rem;
+        
+                        span {
+                            color: var(--green);
+                        }
+                    }
+    
+                    .numbers {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 2rem;
+    
+                        .number {
+    
+                            &:not(:last-child) {
+                                margin-right: 1rem;
+                            }
+    
+                            .tel {
+                                display: block;
+                                font-size: 2.2rem;
+                                line-height: 2.4rem;
+                                font-weight: 600;
+                                margin-bottom: 1rem;
+                                color: var(--green);
+                            }
+    
+                            .city {
+                                font-size: 1.8rem;
+                                line-height: 2rem;
+                                font-weight: 600;
+                                margin-bottom: 1rem;
+                            }
+                        }
+                    }
+                }
+    
+                .top__right {
+                    flex: 0 0 38%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    img {
+                        width: 90%;
+                        height: 90%;
+                    }
+                }
+            }
+
+            &__bottom { 
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .rickroll__img {
+                    width: 10rem;
+                    height: 10rem;
+                    margin-bottom: 2rem;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .rickroll__title {
+                    font-size: 1.8rem;
+                    line-height: 2rem;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}

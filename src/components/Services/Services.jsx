@@ -54,12 +54,12 @@ const Services = () => {
 const content = [
     {
         title: 'For bussiness',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil beatae aspernatur qui et voluptatibus sint similique laudantium repellendus ea perspiciatis ut expedita maxime laboriosam maiores unde explicabo vero sit libero, nulla pariatur quae consequuntur? Recusandae ex distinctio aspernatur deserunt ut tenetur maxime vel consequuntur praesentium, provident saepe, quibusdam ipsum nam autem atque exercitationem possimus? Consequatur itaque aspernatur omnis hic maiores deleniti error ab perferendis, molestias consectetur expedita? Animi adipisci consequuntur provident officiis! Rerum aperiam natus quos deserunt deleniti minima et sunt placeat at laborum provident saepe recusandae, autem itaque delectus culpa repudiandae doloremque, sit eligendi? Officia vitae in mollitia assumenda?',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil beatae aspernatur qui et voluptatibus sint similique laudantium repellendus ea perspiciatis ut expedita maxime laboriosam maiores unde explicabo vero sit libero, nulla pariatur quae consequuntur? Recusandae ex distinctio aspernatur deserunt ut tenetur maxime vel consequuntur praesentium, provident saepe, quibusdam ipsum nam autem atque exercitationem possimus?',
         img: '/images/svg/bussines.svg',
     },
     {
         title: 'Car replacement',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil beatae aspernatur qui et voluptatibus sint similique laudantium repellendus ea perspiciatis ut expedita maxime laboriosam maiores unde explicabo vero sit libero, nulla pariatur quae consequuntur? Recusandae ex distinctio aspernatur deserunt ut tenetur maxime vel consequuntur praesentium, provident saepe, quibusdam ipsum nam autem atque exercitationem possimus? Consequatur itaque aspernatur omnis hic maiores deleniti error ab perferendis, molestias consectetur expedita? Animi adipisci consequuntur provident officiis! Rerum aperiam natus quos deserunt deleniti minima et sunt placeat at laborum provident saepe recusandae, autem itaque delectus culpa repudiandae doloremque, sit eligendi? Officia vitae in mollitia assumenda?',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil beatae aspernatur qui et voluptatibus sint similique laudantium repellendus ea perspiciatis ut expedita maxime laboriosam maiores unde explicabo vero sit libero, nulla pariatur quae consequuntur? Recusandae ex distinctio aspernatur deserunt ut tenetur maxime vel consequuntur praesentium, provident saepe, quibusdam ipsum nam autem atque exercitationem possimus? Consequatur itaque aspernatur omnis hic maiores deleniti error ab perferendis, molestias consectetur expedita? Animi adipisci consequuntur provident officiis!',
         img: '/images/svg/replacement.svg',
     },
 ];

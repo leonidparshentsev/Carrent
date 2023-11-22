@@ -28,7 +28,9 @@ const Footer = () => {
                         <li className={styles.links}>
                             <Link href='/#feedback'>Reviews</Link>
                         </li>
-                        <li className={styles.links}>Support</li>
+                        <li className={styles.links}>
+                            <Link href='/support'>Support</Link>
+                        </li>
                     </ul>
                 </div>
             </div>
