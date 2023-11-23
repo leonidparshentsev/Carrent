@@ -1,9 +1,14 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import styles from './Header.module.scss'
 import Link from 'next/link';
 import Button from '../UI/Button/Button';
+import SignIn from '../SignIn/SignIn';
 
 const Header = () => {
+
+    const [signPopup, setSignPopup] = useState(false);
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>
@@ -27,7 +32,7 @@ const Header = () => {
                     <Link href='/#getapp'>
                         <Button green style={{marginRight: 15}}>Get app</Button>
                     </Link>
-                    <Button>Sign in</Button>
+                    <Button onClick={() => setSignPopup(true)}>Sign in</Button>
                 </div>
             </div>
             <div className={styles.promote}>
@@ -35,6 +40,7 @@ const Header = () => {
                     Use our app to get <Link href='/#getapp'><span>10% discount</span></Link> on your first order
                 </p>
             </div>
+            {signPopup && <SignIn hide={() => setSignPopup(false)}/>}
         </header>
     );
 };

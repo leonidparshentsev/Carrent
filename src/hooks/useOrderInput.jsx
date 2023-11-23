@@ -1,5 +1,5 @@
 import orderInputReducer from '@/reducer/orderInputReducer';
-import React, { useCallback, useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 
 const reducerInitial = {
     firstName: '',
