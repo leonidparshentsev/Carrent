@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styles from './FeedbackPage.module.scss'
 import Carousel from '../UI/Carousel/Carousel';
+import classNames from 'classnames';
 
 const FeedbackPage = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
+    const [cardAnimation, setCardAnimation] = useState('previous');
 
     return (
         <section className={styles.feedback} id='feedback'>
@@ -13,14 +15,18 @@ const FeedbackPage = () => {
                     <div className={styles.feedback__carousel}>
                         <Carousel count={4} vertical
                             page={currentPage}
-                            setPage={setCurrentPage}/>
+                            setPage={setCurrentPage}
+                            setAnimation={setCardAnimation}/>
                     </div>
-                    <div className={styles.feedback__card}>
+                    <div className={classNames(styles.feedback__card, 
+                        cardAnimation === 'previous' ? 
+                        styles.swipe_down : styles.swipe_up )}>
                         <h2 className={styles.title}>
                             <span>Thousands of Happy People</span><br />
                             Using Our Product
                         </h2>
-                        <div className={styles.profile} key={currentPage}>
+                        <div className={styles.profile} 
+                            key={currentPage}>
                             <div className={styles.profile__photo}>
                                 <img src={testimotionals[currentPage - 1].imageUrl} alt="Customer"/>
                             </div>
@@ -33,7 +39,11 @@ const FeedbackPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <p className={styles.text}>{testimotionals[currentPage - 1].feedback}</p>
+                        <p className={styles.text}
+                            key={`${currentPage}-text`}
+                            >
+                                {testimotionals[currentPage - 1].feedback}
+                        </p>
                     </div>
                     <div className={styles.image}>
                         <img src="./images/feedback.jpg" alt="Car photo"/>

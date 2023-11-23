@@ -1,16 +1,22 @@
 "use client"
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import classNames from 'classnames';
 import styles from './Carousel.module.scss'
 
-const Carousel = ({count, vertical, page, setPage}) => {
+const Carousel = ({count, vertical, page, setPage, setAnimation}) => {
 
     const flipLeft = () => {
-        if(page > 1) setPage(p => p - 1);
+        if(page > 1) {
+            setPage(p => p - 1);
+            setAnimation('previous');
+        } 
     }
 
     const flipRight = () => {
-        if(page < count) setPage(p => p + 1);
+        if(page < count) {
+            setPage(p => p + 1);
+            setAnimation('next');
+        } 
     }
 
     return (

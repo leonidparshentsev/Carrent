@@ -22,6 +22,7 @@
             }
 
             .feedback__card {
+                overflow: hidden;
                 width: 38vw;
                 font-size: 1.3rem;
                 line-height: 1.5rem;
@@ -29,6 +30,9 @@
                 color: darken($color: #F8F8F8, $amount: 20%);
 
                 .title {
+                    position: relative;
+                    z-index: 1;
+                    background-color: var(--black);
                     color: var(--white);
                     font-size: 2.2rem;
                     line-height: 2.4rem;
@@ -70,6 +74,36 @@
 
                 .text {
                     margin-bottom: 1rem;
+                }
+
+                &.swipe_down {
+                    .profile, .text {
+                        animation: swipeDown .4s linear;
+                    }
+                }
+
+                &.swipe_up {
+                    .profile, .text {
+                        animation: swipeUp .4s linear;
+                    }
+                }
+
+                @keyframes swipeDown {
+                    0% {
+                        transform: translateY(-5rem);
+                    }
+                    100% {
+                        transform: translateY(0rem);
+                    }
+                }
+
+                @keyframes swipeUp {
+                    0% {
+                        transform: translateY(5rem);
+                    }
+                    100% {
+                        transform: translateY(0rem);
+                    }
                 }
             }
 

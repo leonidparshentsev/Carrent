@@ -64,8 +64,40 @@
                 }
 
                 .models_list {
-                    display: flex;
                     overflow: hidden;
+                    display: flex;
+                    min-width: 63rem;
+
+                    &.swipe_right {
+                        & > div {
+                            animation: swipeRight .4s linear;
+                        }
+                    }
+
+                    &.swipe_left {
+                        & > div {
+                            animation: swipeLeft .4s linear;
+                        }
+                    }
+                    
+                }
+
+                @keyframes swipeRight {
+                    0% {
+                        transform: translateX(-20rem);
+                    }
+                    100% {
+                        transform: translateX(0rem);
+                    }
+                }
+
+                @keyframes swipeLeft {
+                    0% {
+                        transform: translateX(20rem);
+                    }
+                    100% {
+                        transform: translateX(0rem);
+                    }
                 }
             }
         }

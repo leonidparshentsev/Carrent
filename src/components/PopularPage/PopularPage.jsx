@@ -4,14 +4,15 @@ import CarBoard from '../UI/CarBoard/CarBoard';
 import Link from 'next/link';
 import ModelCard from '../ModelCard/ModelCard';
 import Carousel from '../UI/Carousel/Carousel';
-import { useSelector } from 'react-redux';
 import initial from '../../../public/DB.json'
+import classNames from 'classnames';
 
 const PopularPage = () => {
 
     const [activeCarType, setActiveCarType] = useState('sedan');
     const [popularCars, setPopularCars] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [cardAnimation, setCardAnimation] = useState('previous');
 
     useEffect(() => {
         setPopularCars([...initial.cars.filter((car) => car.type === activeCarType)])
@@ -44,9 +45,13 @@ const PopularPage = () => {
                             <Carousel 
                                 count={Math.ceil(popularCars.length/3)}
                                 page={currentPage}
-                                setPage={setCurrentPage}/>
+                                setPage={setCurrentPage}
+                                setAnimation={setCardAnimation}/>
                         </div>
-                        <div className={styles.models_list}>
+                        <div className={classNames(styles.models_list, 
+                            cardAnimation === 'previous' ? 
+                            styles.swipe_right : styles.swipe_left)}
+                            >
                             {popularCars.length > 0 ?
                             popularCars.map((car, index) => {
                                 if((index >= (currentPage * 3) - 3) 
