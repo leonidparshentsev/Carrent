@@ -36,6 +36,19 @@
             text-align: center;
         }
 
+        .span {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                position: relative;
+                top: -.1rem;
+                margin-right: 1rem;
+            }
+        }
+
         .close {
             cursor: pointer;
             position: absolute;

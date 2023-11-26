@@ -25,7 +25,6 @@ const ModelCard = ({car}) => {
     return (
         <div className={styles.model__card}>
             <div className={styles.model__image}>
-                {/* {!isLoaded && <div className={styles.loader}></div>} */}
                 {!isLoaded && <Loader style={{width: '80%', height: '80%'}} />}
                 <img 
                     src={`./images/models/${car.type}/${car.model}.png`} 

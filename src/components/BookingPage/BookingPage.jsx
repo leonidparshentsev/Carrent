@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import styles from './BookingPage.module.scss'
 import Status from '../Status/Status';
 import SelectedCar from '../SelectedCar/SelectedCar';
@@ -11,6 +11,8 @@ import Payment from '../Payment/Payment';
 import useSearchInputs from '@/hooks/useSearchInputs';
 import SuccessPayment from '../SuccessPayment/SuccessPayment';
 import useScrollTo from '@/hooks/useScrollTo';
+import { setNewOrder } from '@/reducer/userAccountSlice';
+import { convertToDate, convertToTime } from '@/utils/convertTimestamp';
 
 const BookingPage = ({params}) => {
 
@@ -23,9 +25,22 @@ const BookingPage = ({params}) => {
     const [additionalCost, setAdditionalCost] = useState(0);
     const [isInputIncorrect, setInputIncorrect] = useState(false);
 
-    const { globalPickUpTime, globalDropOffTime } = useSearchInputs();
+    const { globalPickUpLocation, globalDropOffLocation, globalPickUpTime, globalDropOffTime } = useSearchInputs();
     const daysCount = Math.floor((globalDropOffTime - globalPickUpTime) / ((24*59*60*1000)));
     const [ref, scrollToRef] = useScrollTo();
+
+    const order = useMemo(() => {
+        return {
+            carId: params.id,
+            totalPrice: (currentCar.price * daysCount) + additionalCost,
+            pickUpPlace: globalPickUpLocation,
+            pickUpDate: convertToDate(globalPickUpTime, '.'),
+            pickUpTime: convertToTime(globalPickUpTime),
+            dropOffPlace: globalDropOffLocation,
+            dropOffDate: convertToDate(globalDropOffTime, '.'),
+            dropOffTime: convertToTime(globalDropOffTime),
+        }
+    }, [params.id, globalPickUpLocation, globalDropOffLocation, globalPickUpTime, globalDropOffTime, currentCar.totalPrice, daysCount, additionalCost])
 
     useEffect(() => {
         setCurrentCar(carsList[params.id - 1]);
@@ -96,6 +111,7 @@ const BookingPage = ({params}) => {
                                 if(!markInvalidInputs(isIncorrect)) {
                                     setCurrentStatus('payment-done');
                                     scrollToRef();
+                                    dispatch(setNewOrder(order));
                                 }
                             }}/>
                     </>

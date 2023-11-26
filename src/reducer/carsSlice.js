@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import initial from '../../public/DB.json'
 
-export const carsSlice = createSlice({
+const carsSlice = createSlice({
     name: 'cars',
     initialState: [
         ...initial.cars

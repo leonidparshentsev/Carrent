@@ -4,10 +4,14 @@ import styles from './Header.module.scss'
 import Link from 'next/link';
 import Button from '../UI/Button/Button';
 import SignIn from '../SignIn/SignIn';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
 
+    const userAccountState = useSelector(state => state.userAccount);
     const [signPopup, setSignPopup] = useState(false);
+    const router = useRouter();
 
     return (
         <header className={styles.header}>
@@ -32,7 +36,20 @@ const Header = () => {
                     <Link href='/#getapp'>
                         <Button green style={{marginRight: 15}}>Get app</Button>
                     </Link>
-                    <Button onClick={() => setSignPopup(true)}>Sign in</Button>
+                    {!userAccountState.isAuthorized ?
+                        <Button onClick={() => setSignPopup(true)}>Sign in</Button>
+                    :
+                        <div className={styles.account_preview}
+                            onClick={() => router.push('/user')}
+                            >
+                            <div className={styles.account__image}>
+                                <img src="/images/comments/user.png" alt=""/>
+                            </div>
+                            <p className={styles.account__name}>
+                                {`${userAccountState.userName} ${userAccountState.userSurname}`}
+                            </p>
+                        </div>
+                    }
                 </div>
             </div>
             <div className={styles.promote}>

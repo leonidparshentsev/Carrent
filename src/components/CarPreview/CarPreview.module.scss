@@ -8,23 +8,92 @@
     .car__image {
         flex: 0 0 50%;
         align-self: center;
-        // text-align: center;
 
         img {
-            // height: 75%;
-            // margin: auto 0;
             height: auto;
             width: 65%;
         }
     }
 
     .car__about {
-        flex: 0 0 25%;
+        flex: 0 0 35%;
 
         .about__title {
             font-size: 2rem;
             line-height: 2.2rem;
             margin-bottom: 3rem;
+        }
+
+        .trip_data {
+            display: flex;
+            font-size: 1.3rem;
+            line-height: 1.5rem;
+
+            .data {
+                flex: 1 0 49%;
+
+                &__title {
+                    margin-bottom: 1rem;
+                }
+
+                &__text {
+                    position: relative;
+                    padding-left: 2.5rem;
+
+                    &:not(:last-child) {
+                        margin-bottom: .5rem;
+                    }
+                }
+
+                &:not(:last-child) {
+                    margin-right: 1rem;
+                }
+
+                .place,
+                .date,
+                .time {
+                    &::before {
+                        position: absolute;
+                        content: '';
+                    }
+                }
+
+                .place {
+                    &::before {
+                        width: 1.8rem;
+                        height: 1.8rem;
+                        top: -.3rem;
+                        left: -.1rem;
+                        background: url('/images/svg/point.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+                }
+
+                .date {
+                    &::before {
+                        width: 1.6rem;
+                        height: 1.8rem;
+                        top: -.2rem;
+                        left: 0;
+                        background: url('/images/svg/date.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+                }
+
+                .time {
+                    &::before {
+                        width: 1.6rem;
+                        height: 1.6rem;
+                        top: -.1rem;
+                        left: 0;
+                        background: url('/images/svg/clock.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+                }
+            }
         }
 
         .about__benefits {
@@ -56,7 +125,7 @@
     }
 
     .car__price {
-        flex: 0 0 25%;
+        flex: 0 0 15%;
         font-size: 1.2rem;
         line-height: 1.4rem;
         color: darken($color: #F8F8F8, $amount: 30%);

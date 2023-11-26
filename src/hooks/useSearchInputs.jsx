@@ -98,6 +98,8 @@ const useSearchInputs = () => {
         setLocalDropOffLocation, 
         setLocalPickUpTime, 
         setLocalDropOffTime,
+        globalPickUpLocation,
+        globalDropOffLocation,
         globalPickUpTime,
         globalDropOffTime,
         changeGlobalState,
