@@ -3,10 +3,13 @@ import CarPreview from '../CarPreview/CarPreview';
 import styles from './UserPage.module.scss'
 import initial from '../../../public/DB.json'
 import { useSelector } from 'react-redux';
+import { redirect } from 'next/navigation';
 
 const UserPage = () => {
 
     const userAccountState = useSelector(state => state.userAccount);
+    
+    if(!userAccountState.isAuthorized) redirect('/');
 
     return (
         <section className={styles.user}>
