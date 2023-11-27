@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import styles from './HomePage.module.scss'
 import Button from '../UI/Button/Button';
 import Image from 'next/image';
@@ -10,12 +10,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setType } from '@/reducer/orderSlice';
 import useSearchInputs from '@/hooks/useSearchInputs';
 import { useRouter } from 'next/navigation';
+import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
+import useLoader from '@/hooks/useLoader';
 
 
 const HomePage = () => {
     const router = useRouter();
     const orderState = useSelector(state => state.order);
     const dispatch = useDispatch();
+
+    const [isLoading, showLoader] = useLoader();
 
     const { localPickUpLocation,
         localPickUpTime,
@@ -82,7 +86,7 @@ const HomePage = () => {
                         <Button green
                             onClick={() => {
                                 changeGlobalState();
-                                router.push('/cars');
+                                showLoader(() => router.push('/cars'));
                             }}
                             style={{
                                 padding: '1rem 4rem',
@@ -92,6 +96,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+            {isLoading && <SearchAnimation/>}
         </section>
     );
 };

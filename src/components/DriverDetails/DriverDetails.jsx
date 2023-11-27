@@ -5,6 +5,8 @@ import Button from '../UI/Button/Button';
 import PriceOverview from '../PriceOverview/PriceOverview';
 import BookingInput from '../UI/BookingInput/BookingInput';
 import useOrderInput from '@/hooks/useOrderInput';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserName, setUserSurname, setUserEmail } from '@/reducer/userAccountSlice';
 
 const DriverDetails = ({setCurrentStatus, 
         car, 
@@ -21,6 +23,23 @@ const DriverDetails = ({setCurrentStatus,
         setPhoneNumber,
         setEmail,
         checkDriverInputsIsEmpty } = useOrderInput();
+    
+    const dispatch = useDispatch();
+    const userAccountState = useSelector(state => state.userAccount);
+
+    const confirmHandler = () => {
+        if(checkDriverInputsIsEmpty()) {
+            setCurrentStatus(true);
+        } else {
+            setCurrentStatus(false);
+
+            if(!userAccountState.isAuthorized) {
+                dispatch(setUserName(firstName));
+                dispatch(setUserSurname(lastName));
+                dispatch(setUserEmail(email));
+            }
+        }
+    }
 
     return (
         <div className={styles.driver_details}>
@@ -36,6 +55,7 @@ const DriverDetails = ({setCurrentStatus,
                 <div className={styles.label_container}>
                     <BookingInput label='First name' type='text'
                         invalid={isInputIncorrect && !firstName}
+                        autoFocus
                         value={firstName} 
                         setValue={setFirstName} 
                         />
@@ -68,13 +88,7 @@ const DriverDetails = ({setCurrentStatus,
             </p>
             <Button green
                 style={{width: '80%', alignSelf: 'center'}}
-                onClick={() => {
-                    if(checkDriverInputsIsEmpty()) {
-                        setCurrentStatus(true);
-                    } else {
-                        setCurrentStatus(false);
-                    }
-                }}>Confirm</Button>
+                onClick={confirmHandler}>Confirm</Button>
         </div>
     );
 };

@@ -2,6 +2,8 @@ import styles from './RentalCondition.module.scss'
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import useSearchInputs from '@/hooks/useSearchInputs';
+import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
+import useLoader from '@/hooks/useLoader';
 
 const RentalCondition = ({car, isInputIncorrect}) => {
 
@@ -14,6 +16,8 @@ const RentalCondition = ({car, isInputIncorrect}) => {
         setLocalPickUpTime,
         setLocalDropOffTime,
         changeGlobalState } = useSearchInputs();
+
+    const [isLoading, showLoader] = useLoader();
 
     return (
         <div className={styles.rental_condition}>
@@ -61,8 +65,12 @@ const RentalCondition = ({car, isInputIncorrect}) => {
                 }
             </div>
             <Button green
-                onClick={changeGlobalState}
+                onClick={() => {
+                    changeGlobalState();
+                    showLoader();
+                }}
                 style={{width: '100%'}}>Update</Button>
+            {isLoading && <SearchAnimation/>}
         </div>
     );
 };

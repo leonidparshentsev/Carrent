@@ -3,6 +3,8 @@ import styles from './SearchPage.module.scss'
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import useSearchInputs from '@/hooks/useSearchInputs';
+import useLoader from '@/hooks/useLoader';
+import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
 
 const SearchPage = () => {
 
@@ -15,6 +17,8 @@ const SearchPage = () => {
         setLocalPickUpTime, 
         setLocalDropOffTime,
         changeGlobalState } = useSearchInputs();
+
+    const [isLoading, showLoader] = useLoader();
 
     return (
         <section className={styles.search}>
@@ -41,10 +45,15 @@ const SearchPage = () => {
                             />
                     </div>
                     <div className={styles.button}>
-                        <Button green onClick={changeGlobalState}>Search</Button>
+                        <Button green 
+                            onClick={() => {
+                                changeGlobalState();
+                                showLoader();
+                            }}>Search</Button>
                     </div>
                 </div>
             </div>
+            {isLoading && <SearchAnimation/>}
         </section>
     );
 };

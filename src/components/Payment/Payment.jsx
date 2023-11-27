@@ -5,6 +5,8 @@ import Button from '../UI/Button/Button';
 import PriceOverview from '../PriceOverview/PriceOverview';
 import BookingInput from '../UI/BookingInput/BookingInput';
 import useOrderInput from '@/hooks/useOrderInput';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogIn } from '@/reducer/userAccountSlice';
 
 const Payment = ({setCurrentStatus, car, daysCount, additionalCost, isInputIncorrect}) => {
 
@@ -15,6 +17,9 @@ const Payment = ({setCurrentStatus, car, daysCount, additionalCost, isInputIncor
         setCardDate,
         setCardCvc,
         checkPaymentInputsIsEmpty } = useOrderInput();
+    
+    const dispatch = useDispatch();
+    const userAccountState = useSelector(state => state.userAccount);
 
     return (
         <div className={styles.payment}>
@@ -29,6 +34,7 @@ const Payment = ({setCurrentStatus, car, daysCount, additionalCost, isInputIncor
             <div className={styles.payment__block}>
                 <BookingInput label='Card number' type='number'
                     invalid={isInputIncorrect && !cardNumber}
+                    autoFocus
                     value={cardNumber}
                     setValue={setCardNumber}
                     />
@@ -61,6 +67,9 @@ const Payment = ({setCurrentStatus, car, daysCount, additionalCost, isInputIncor
                         setCurrentStatus(true);
                     } else {
                         setCurrentStatus(false);
+                        if(!userAccountState.isAuthorized) {
+                            dispatch(setLogIn());
+                        }
                     }
                 }}>Pay</Button>
         </div>
