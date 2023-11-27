@@ -31,8 +31,7 @@ const CarListPage = () => {
             dispatch(setType(''));
             dispatch(setInitialCars());
         };
-
-    }, [dispatch, orderState.carType]);
+    }, []);
     
     const [ref, scrollToRef] = useScrollTo();
 

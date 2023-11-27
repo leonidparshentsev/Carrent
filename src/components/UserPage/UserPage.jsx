@@ -25,7 +25,7 @@ const UserPage = () => {
                         })
                         :
                         <h3 className={styles.orders__title}>
-                            You don't have any active orders
+                            {`You don't have any active orders`}
                         </h3>
                     }
                     

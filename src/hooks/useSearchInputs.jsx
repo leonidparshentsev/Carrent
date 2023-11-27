@@ -44,18 +44,23 @@ const useSearchInputs = () => {
     const globalPickUpTime = orderState.globalPickUpTime;
     const globalDropOffTime = orderState.globalDropOffTime;
 
-    const changeGlobalPickUpLocation = (loc) => dispatch(setGlobalPickUpLocation(loc));
-    const changeGlobalDropOffLocation = (loc) => dispatch(setGlobalDropOffLocation(loc));
-    const changeGlobalPickUpTime = (time) => dispatch(setGlobalPickUpTime(time));
-    const changeGlobalDropOffTime = (time) => dispatch(setGlobalDropOffTime(time));
+    // const changeGlobalPickUpLocation = (loc) => dispatch(setGlobalPickUpLocation(loc));
+    // const changeGlobalDropOffLocation = (loc) => dispatch(setGlobalDropOffLocation(loc));
+    // const changeGlobalPickUpTime = (time) => dispatch(setGlobalPickUpTime(time));
+    // const changeGlobalDropOffTime = (time) => dispatch(setGlobalDropOffTime(time));
 
 
     const changeGlobalState = useCallback(() => {
+        const changeGlobalPickUpLocation = (loc) => dispatch(setGlobalPickUpLocation(loc));
+        const changeGlobalDropOffLocation = (loc) => dispatch(setGlobalDropOffLocation(loc));
+        const changeGlobalPickUpTime = (time) => dispatch(setGlobalPickUpTime(time));
+        const changeGlobalDropOffTime = (time) => dispatch(setGlobalDropOffTime(time));
+
         changeGlobalPickUpLocation(localPickUpLocation);
         changeGlobalPickUpTime(localPickUpTime);
         changeGlobalDropOffLocation(localDropOffLocation);
         changeGlobalDropOffTime(localDropOffTime);
-    }, [localPickUpLocation, localPickUpTime, localDropOffLocation, localDropOffTime, changeGlobalPickUpLocation, changeGlobalPickUpTime, changeGlobalDropOffLocation, changeGlobalDropOffTime]);
+    }, [localPickUpLocation, localPickUpTime, localDropOffLocation, localDropOffTime, dispatch]);
 
 
     const checkIsEmptyGlobalState = useCallback(() => {
