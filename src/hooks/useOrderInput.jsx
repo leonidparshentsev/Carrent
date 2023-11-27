@@ -1,5 +1,6 @@
 import orderInputReducer from '@/reducer/orderInputReducer';
-import { useCallback, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
+import { useSelector } from 'react-redux';
 
 const reducerInitial = {
     firstName: '',
@@ -14,6 +15,7 @@ const reducerInitial = {
 const useOrderInput = () => {
 
     const [inputState, inputDispatch] = useReducer(orderInputReducer, reducerInitial);
+    const accountState = useSelector(state => state.userAccount);
 
     const firstName = inputState.firstName;
     const lastName = inputState.lastName;
@@ -30,6 +32,14 @@ const useOrderInput = () => {
     const setCardNumber = useCallback((input) => inputDispatch({type: 'SET_CARD_NUMBER', payload: input}), []);
     const setCardDate = useCallback((input) => inputDispatch({type: 'SET_CARD_DATE', payload: input}), []);
     const setCardCvc = useCallback((input) => inputDispatch({type: 'SET_CARD_CVC', payload: input}), []);
+
+    useEffect(() => {
+        if(accountState.isAuthorized) {
+            setFirstName(accountState.userName);
+            setLastName(accountState.userSurname);
+            setEmail(accountState.userEmail);
+        }
+    }, [accountState.isAuthorized]);
 
     const checkDriverInputsIsEmpty = useCallback(() => {
         if(firstName === '' 
