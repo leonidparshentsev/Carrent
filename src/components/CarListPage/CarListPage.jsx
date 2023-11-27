@@ -20,7 +20,7 @@ const CarListPage = () => {
 
     useEffect(() => {
         if(currentPage > Math.ceil(carsList.length/5)) setCurrentPage(1);
-    }, [selectState]);
+    }, [currentPage, carsList.length, selectState]);
 
     useEffect(() => {
         if(orderState.carType !== '') {
@@ -32,7 +32,7 @@ const CarListPage = () => {
             dispatch(setInitialCars());
         };
 
-    }, []);
+    }, [dispatch, orderState.carType]);
     
     const [ref, scrollToRef] = useScrollTo();
 

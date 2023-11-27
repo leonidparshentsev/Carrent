@@ -40,12 +40,12 @@ const BookingPage = ({params}) => {
             dropOffDate: convertToDate(globalDropOffTime, '.'),
             dropOffTime: convertToTime(globalDropOffTime),
         }
-    }, [params.id, globalPickUpLocation, globalDropOffLocation, globalPickUpTime, globalDropOffTime, currentCar.totalPrice, daysCount, additionalCost])
+    }, [params.id, globalPickUpLocation, globalDropOffLocation, globalPickUpTime, globalDropOffTime, currentCar.price, daysCount, additionalCost])
 
     useEffect(() => {
         setCurrentCar(carsList[params.id - 1]);
         dispatch(setCarId(params.id));
-    }, [carsList])
+    }, [dispatch, carsList, params.id])
 
     const markInvalidInputs = (isIncorrect) => {
         if(isIncorrect) {

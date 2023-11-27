@@ -55,7 +55,7 @@ const useSearchInputs = () => {
         changeGlobalPickUpTime(localPickUpTime);
         changeGlobalDropOffLocation(localDropOffLocation);
         changeGlobalDropOffTime(localDropOffTime);
-    }, [localPickUpLocation, localPickUpTime, localDropOffLocation, localDropOffTime]);
+    }, [localPickUpLocation, localPickUpTime, localDropOffLocation, localDropOffTime, changeGlobalPickUpLocation, changeGlobalPickUpTime, changeGlobalDropOffLocation, changeGlobalDropOffTime]);
 
 
     const checkIsEmptyGlobalState = useCallback(() => {
@@ -70,25 +70,25 @@ const useSearchInputs = () => {
         if(globalPickUpLocation !== '') {
             setLocalPickUpLocation(globalPickUpLocation);
         } 
-    }, [globalPickUpLocation])
+    }, [globalPickUpLocation, setLocalPickUpLocation])
 
     useEffect(() => {
         if(globalDropOffLocation !== '') {
             setLocalDropOffLocation(globalDropOffLocation);
         } 
-    }, [globalDropOffLocation])
+    }, [globalDropOffLocation, setLocalDropOffLocation])
 
     useEffect(() => {
         if(globalPickUpTime !== '') {
             setLocalPickUpTime(globalPickUpTime);
         } 
-    }, [globalPickUpTime])
+    }, [globalPickUpTime, setLocalPickUpTime])
 
     useEffect(() => {
         if(globalDropOffTime !== '') {
             setLocalDropOffTime(globalDropOffTime);
         } 
-    }, [globalDropOffTime])
+    }, [globalDropOffTime, setLocalDropOffTime])
 
     return { localPickUpLocation,
         localDropOffLocation,
