@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './SearchPage.module.scss'
-import Input from '../UI/Input/Input';
+import DateInput from '../UI/DateInput/DateInput';
 import Button from '../UI/Button/Button';
 import useSearchInputs from '@/hooks/useSearchInputs';
 import useLoader from '@/hooks/useLoader';
 import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
+import LocationInput from '../UI/LocationInput/LocationInput';
 
 const SearchPage = () => {
 
@@ -25,21 +26,21 @@ const SearchPage = () => {
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.inputs}>
-                        <Input label='Pick up location' 
+                        <LocationInput label='Pick up location' 
                             placeholder='Pick up location'
                             initialLocation={localPickUpLocation}
                             changeLocation={setLocalPickUpLocation}
                             />
-                        <Input label='PICK UP TIME' time
+                        <DateInput label='PICK UP TIME'
                             initialDate={localPickUpTime}
                             changeDate={setLocalPickUpTime}
                             />
-                        <Input label='Return location' 
+                        <LocationInput label='Return location' 
                             placeholder='Return location'
                             initialLocation={localDropOffLocation}
                             changeLocation={setLocalDropOffLocation}
                             />
-                        <Input label='DROP OFF TIME' time
+                        <DateInput label='DROP OFF TIME'
                             initialDate={localDropOffTime}
                             changeDate={setLocalDropOffTime} 
                             />

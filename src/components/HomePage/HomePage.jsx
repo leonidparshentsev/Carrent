@@ -5,13 +5,14 @@ import Image from 'next/image';
 
 import mini from '../../../public/images/mini.png';
 import CarBoard from '../UI/CarBoard/CarBoard';
-import Input from '../UI/Input/Input';
+import DateInput from '../UI/DateInput/DateInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { setType } from '@/reducer/orderSlice';
 import useSearchInputs from '@/hooks/useSearchInputs';
 import { useRouter } from 'next/navigation';
 import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
 import useLoader from '@/hooks/useLoader';
+import LocationInput from '../UI/LocationInput/LocationInput';
 
 
 const HomePage = () => {
@@ -62,8 +63,7 @@ const HomePage = () => {
                                 />
                         </div>
                         <div className={styles.wrapper}>
-                            <Input
-                                label='PICK UP & RETURN LOCATION'
+                            <LocationInput label='PICK UP & RETURN LOCATION'
                                 placeholder='Pick up & Return location'
                                 initialLocation={localPickUpLocation}
                                 changeLocation={setLocalPickUpLocation}
@@ -71,13 +71,13 @@ const HomePage = () => {
                         </div>
                         <div className={styles.search__time}>
                             <div className={styles.wrapper}>
-                                <Input label='PICK UP TIME' time
+                                <DateInput label='PICK UP TIME'
                                     initialDate={localPickUpTime}
                                     changeDate={setLocalPickUpTime}
                                     />
                             </div>
                             <div className={styles.wrapper}>
-                                <Input label='DROP OFF TIME' time
+                                <DateInput label='DROP OFF TIME'
                                     initialDate={localDropOffTime}
                                     changeDate={setLocalDropOffTime}
                                     />

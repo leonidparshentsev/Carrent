@@ -33,7 +33,7 @@ const BookingPage = ({params}) => {
 
     const order = {
             carId: params.id,
-            totalPrice: (currentCar?.price * daysCount) + additionalCost,
+            totalPrice: ((currentCar?.price * daysCount) + additionalCost).toFixed(2),
             pickUpPlace: globalPickUpLocation,
             pickUpDate: convertToDate(globalPickUpTime, '.'),
             pickUpTime: convertToTime(globalPickUpTime),
@@ -44,13 +44,7 @@ const BookingPage = ({params}) => {
 
     useEffect(() => {
         setCurrentCar(initial.cars[params.id - 1]);
-        // dispatch(setCarId(params.id));
     }, [initial, params.id]);
-
-    // useEffect(() => {
-    //     setCurrentCar(carsList[params.id - 1]);
-    //     dispatch(setCarId(params.id));
-    // }, [dispatch, carsList, params.id]);
 
     const markInvalidInputs = (isIncorrect) => {
         if(isIncorrect) {

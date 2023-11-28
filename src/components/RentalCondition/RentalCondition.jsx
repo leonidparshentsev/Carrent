@@ -1,9 +1,10 @@
 import styles from './RentalCondition.module.scss'
 import Button from '../UI/Button/Button';
-import Input from '../UI/Input/Input';
+import DateInput from '../UI/DateInput/DateInput';
 import useSearchInputs from '@/hooks/useSearchInputs';
 import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
 import useLoader from '@/hooks/useLoader';
+import LocationInput from '../UI/LocationInput/LocationInput';
 
 const RentalCondition = ({car, isInputIncorrect}) => {
 
@@ -30,29 +31,29 @@ const RentalCondition = ({car, isInputIncorrect}) => {
                 alt=""/>
             </div>
             <div className={styles.inputs}>
-                <Input border 
+                <LocationInput border 
                     invalid={isInputIncorrect && !localPickUpLocation}
                     label='Pick up location' 
                     placeholder='Pick up location'
                     initialLocation={localPickUpLocation}
                     changeLocation={setLocalPickUpLocation}
                     />
-                <Input border 
+                <DateInput border 
                     invalid={isInputIncorrect && !localPickUpTime}
-                    label='PICK UP TIME' time
+                    label='PICK UP TIME'
                     initialDate={localPickUpTime}
                     changeDate={setLocalPickUpTime}
                     />
-                <Input border
+                <LocationInput border
                     invalid={isInputIncorrect && !localDropOffLocation}
                     label='Return location' 
                     placeholder='Return location'
                     initialLocation={localDropOffLocation}
                     changeLocation={setLocalDropOffLocation}
                     />
-                <Input border
+                <DateInput border
                     invalid={isInputIncorrect && !localDropOffTime} 
-                    label='DROP OFF TIME' time
+                    label='DROP OFF TIME'
                     initialDate={localDropOffTime}
                     changeDate={setLocalDropOffTime} 
                     />
