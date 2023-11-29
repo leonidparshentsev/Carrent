@@ -1,7 +1,6 @@
-import React from 'react';
-import styles from './ValuesPage.module.scss'
+import styles from './Values.module.scss'
 
-const ValuesPage = () => {
+const Values = () => {
     return (
         <section className={styles.values}>
             <div className={styles.container}>
@@ -114,4 +113,4 @@ const ValuesPage = () => {
     );
 };
 
-export default ValuesPage;
+export default Values;

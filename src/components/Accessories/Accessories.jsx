@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Accessories.module.scss'
 import Button from '../UI/Button/Button';
 import AdditionalService from '../AdditionalService/AdditionalService';
@@ -13,7 +12,7 @@ const Accessories = ({setCurrentStatus,
         additionalCost,
         setAdditionalCost}) => {
 
-        const { checkIsEmptyGlobalState } = useSearchInputs();
+    const { checkIsEmptyGlobalState } = useSearchInputs();
 
     return (
         <div className={styles.accessories}>

@@ -1,14 +1,13 @@
-import React from 'react';
 import styles from './StatusLine.module.scss'
 import classNames from 'classnames';
 
-const StatusLine = ({status}) => {
+const circleStyle = {
+    default: classNames(styles.circle),
+    active: classNames(styles.circle, styles.active),
+    done: classNames(styles.circle, styles.done)
+};
 
-    const circleStyle = {
-        default: classNames(styles.circle),
-        active: classNames(styles.circle, styles.active),
-        done: classNames(styles.circle, styles.done)
-    }
+const StatusLine = ({status}) => {
 
     const conditionStyle = (status === 'condition') ? 
         circleStyle.active : circleStyle.done;

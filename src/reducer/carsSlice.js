@@ -1,44 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
-import initial from '../../public/DB.json'
+import data from '../../public/DB.json'
 
 const carsSlice = createSlice({
     name: 'cars',
     initialState: [
-        ...initial.cars
+        ...data.cars
     ],
     reducers: {
         filterByPrice: (state, action) => {
             sort(state, action.payload);
         },
         filterBySeats: (state, action) => {
-            state = [...initial.cars];
+            state = [...data.cars];
 
-            if(action.payload.selectState.transmission !== 'default') {
-                state = state.filter(car => car.transmission === action.payload.selectState.transmission);
+            if(action.payload.transmission !== 'default') {
+                state = state.filter(car => car.transmission === action.payload.transmission);
             }
-            if(action.payload.selectState.price !== 'default') {
-                sort(state, action.payload.selectState.price);
+            if(action.payload.price !== 'default') {
+                sort(state, action.payload.price);
             }
 
-            return [...state.filter(car => car.seats === action.payload.value)]
+            return [...state.filter(car => car.seats === action.payload.seats)]
         },
         filterByTransmission: (state, action) => {
-            state = [...initial.cars];
+            state = [...data.cars];
 
             // Если другие селекторы не в дефолтном положении применяем их
-            if(action.payload.selectState.seats !== 'default') {
-                state = state.filter(car => car.seats === action.payload.selectState.seats);
+            if(action.payload.seats !== 'default') {
+                state = state.filter(car => car.seats === action.payload.seats);
             }
-            if(action.payload.selectState.price !== 'default') {
-                sort(state, action.payload.selectState.price);
+            if(action.payload.price !== 'default') {
+                sort(state, action.payload.price);
             }
 
-            return [...state.filter(car => car.transmission === action.payload.value)]
+            return [...state.filter(car => car.transmission === action.payload.transmission)]
         },
         filterByType: (state, action) => {
             return [...state.filter(car => car.type === action.payload)]
         },
-        setInitialCars: state => [...initial.cars]
+        setInitialCars: state => [...data.cars]
     }
 });
 

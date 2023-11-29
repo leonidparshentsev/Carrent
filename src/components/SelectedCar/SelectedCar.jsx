@@ -1,13 +1,11 @@
-import React from 'react';
 import styles from './SelectedCar.module.scss'
-import { useSelector } from 'react-redux';
 import GrayBlock from '../UI/GrayBlock/GrayBlock';
+import initial from '../../../public/DB.json'
 
 const SelectedCar = ({car}) => {
-    const carList = useSelector(state => state.cars);
+    const carList = initial.cars;
 
     return (
-        // <div className={styles.selected_car}>
         <GrayBlock>
             <h2 className={styles.main_title}>Your selection</h2>
             <div className={styles.image}>
@@ -53,7 +51,6 @@ const SelectedCar = ({car}) => {
                 </div>
             </div> 
         </GrayBlock>
-        // </div>
     );
 };
 

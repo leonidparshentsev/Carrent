@@ -1,10 +1,9 @@
-import React from 'react';
-import styles from './CarPreview.module.scss'
-import Button from '../UI/Button/Button';
 import { useDispatch } from 'react-redux';
 import { setCarId } from '@/reducer/orderSlice';
 import { useRouter } from 'next/navigation';
+import styles from './CarPreview.module.scss'
 import classNames from 'classnames';
+import Button from '../UI/Button/Button';
 
 const CarPreview = ({inUserAccount, car, orderData}) => {
     

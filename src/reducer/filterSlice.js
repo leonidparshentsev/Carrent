@@ -20,8 +20,3 @@ export const filterSlice = createSlice({
 export const { setPrice, setSeats, setTransmission, setDefaultSelect } = filterSlice.actions;
 
 export default filterSlice.reducer;
-
-// const [selectState, setSelectState] = useState({...defaultSelectState});
-// const priceHandler = (e) => setSelectState({...selectState, price: e.target.value});
-// const seatsHandler = (e) => setSelectState({...selectState, seats: e.target.value});
-// const transmissionHandler = (e) => setSelectState({...selectState, transmission: e.target.value});

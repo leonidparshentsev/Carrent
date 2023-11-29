@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './PriceOverview.module.scss'
 
 const PriceOverview = ({car, daysCount, additionalCost}) => {

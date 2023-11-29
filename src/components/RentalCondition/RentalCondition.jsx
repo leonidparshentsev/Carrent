@@ -1,10 +1,10 @@
 import styles from './RentalCondition.module.scss'
 import Button from '../UI/Button/Button';
 import DateInput from '../UI/DateInput/DateInput';
-import useSearchInputs from '@/hooks/useSearchInputs';
 import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
-import useLoader from '@/hooks/useLoader';
 import LocationInput from '../UI/LocationInput/LocationInput';
+import useSearchInputs from '@/hooks/useSearchInputs';
+import useLoader from '@/hooks/useLoader';
 
 const RentalCondition = ({car, isInputIncorrect}) => {
 

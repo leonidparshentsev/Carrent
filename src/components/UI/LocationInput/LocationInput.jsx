@@ -42,8 +42,14 @@ const LocationInput = ({placeholder,
                     })
                     .map( (location, index) => (
                         <div key={index}
+                            tabIndex={0}
                             className={styles.dropdown__content}
-                            onClick={() => changeLocation(location)}>
+                            onClick={() => changeLocation(location)}
+                            onKeyDown={(e) => {
+                                if(e.key === 'Enter') {
+                                    changeLocation(location);
+                                }
+                            }}>
                             {location}
                         </div>
                     ))

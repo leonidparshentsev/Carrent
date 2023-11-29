@@ -1,19 +1,16 @@
-import React, { useEffect, useReducer, useState } from 'react';
-import styles from './HomePage.module.scss'
-import Button from '../UI/Button/Button';
-import Image from 'next/image';
-
-import mini from '../../../public/images/mini.png';
-import CarBoard from '../UI/CarBoard/CarBoard';
-import DateInput from '../UI/DateInput/DateInput';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import styles from './HomePage.module.scss'
 import { setType } from '@/reducer/orderSlice';
 import useSearchInputs from '@/hooks/useSearchInputs';
-import { useRouter } from 'next/navigation';
-import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
 import useLoader from '@/hooks/useLoader';
+import CarBoard from '../UI/CarBoard/CarBoard';
+import DateInput from '../UI/DateInput/DateInput';
+import Button from '../UI/Button/Button';
 import LocationInput from '../UI/LocationInput/LocationInput';
-
+import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
+import mini from '../../../public/images/mini.png';
 
 const HomePage = () => {
     const router = useRouter();
@@ -30,7 +27,7 @@ const HomePage = () => {
         setLocalDropOffTime,
         changeGlobalState } = useSearchInputs();
 
-    const changeCarTypeHandler = (type)=> {
+    const changeCarTypeHandler = (type) => {
         if(type !== orderState.carType) {
             dispatch(setType(type));
         } else {

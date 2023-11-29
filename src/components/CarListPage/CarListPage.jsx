@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './CarListPage.module.scss'
 import CarPreview from '../CarPreview/CarPreview';
 import Pagination from '../UI/Pagination/Pagination';
@@ -14,13 +14,9 @@ const CarListPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     
     const carsList = useSelector(state => state.cars);
-    const selectState = useSelector(state => state.filter);
+    const filterState = useSelector(state => state.filter);
     const orderState = useSelector(state => state.order);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        if(currentPage > Math.ceil(carsList.length/5)) setCurrentPage(1);
-    }, [currentPage, carsList.length, selectState]);
 
     useEffect(() => {
         if(orderState.carType !== '') {
@@ -45,11 +41,12 @@ const CarListPage = () => {
                         <div className={styles.filters}>
                             <p className={styles.available}>{carsList.length} available</p>
                             <select 
-                                value={selectState.price}
+                                value={filterState.price}
                                 className={styles.select}
                                 onChange={(e) => {
                                     dispatch(setPrice(e.target.value));
                                     dispatch(filterByPrice(e.target.value));
+                                    setCurrentPage(1);
                                 }}
                                 >
                                 <option value="default" disabled>Price</option>
@@ -57,11 +54,12 @@ const CarListPage = () => {
                                 <option value="high">Higher price</option>
                             </select>
                             <select 
-                                value={selectState.seats}
+                                value={filterState.seats}
                                 className={styles.select}
                                 onChange={(e) => {
                                     dispatch(setSeats(e.target.value));
-                                    dispatch(filterBySeats({value: e.target.value, selectState}));
+                                    dispatch(filterBySeats({...filterState, seats: e.target.value}));
+                                    setCurrentPage(1);
                                 }}
                                 >
                                 <option value="default" disabled>Seats</option>
@@ -69,11 +67,12 @@ const CarListPage = () => {
                                 <option value="4+">4+ seats</option>
                             </select>
                             <select 
-                                value={selectState.transmission}
+                                value={filterState.transmission}
                                 className={styles.select}
                                 onChange={(e) => {
                                     dispatch(setTransmission(e.target.value));
-                                    dispatch(filterByTransmission({value: e.target.value, selectState}));
+                                    dispatch(filterByTransmission({...filterState, transmission: e.target.value}));
+                                    setCurrentPage(1);
                                 }}
                                 >
                                 <option value="default" disabled>
@@ -85,7 +84,8 @@ const CarListPage = () => {
                             <button className={styles.clear}
                                 onClick={() => {
                                     dispatch(setDefaultSelect());
-                                    dispatch(setInitialCars())
+                                    dispatch(setInitialCars());
+                                    setCurrentPage(1);
                                 }}
                             >Clear</button>
                         </div>

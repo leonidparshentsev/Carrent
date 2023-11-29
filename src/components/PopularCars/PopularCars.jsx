@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import styles from './PopularPage.module.scss'
-import CarBoard from '../UI/CarBoard/CarBoard';
+import { useState } from 'react';
 import Link from 'next/link';
-import ModelCard from '../ModelCard/ModelCard';
-import Carousel from '../UI/Carousel/Carousel';
-import initial from '../../../public/DB.json'
+import styles from './PopularCars.module.scss'
 import classNames from 'classnames';
+import CarBoard from '../UI/CarBoard/CarBoard';
+import Carousel from '../UI/Carousel/Carousel';
+import ModelCard from '../ModelCard/ModelCard';
+import data from '../../../public/DB.json'
 
-const PopularPage = () => {
+const PopularCars = () => {
 
     const [activeCarType, setActiveCarType] = useState('sedan');
-    const [popularCars, setPopularCars] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardAnimation, setCardAnimation] = useState('previous');
 
-    useEffect(() => {
-        setPopularCars([...initial.cars.filter((car) => car.type === activeCarType)])
-    }, [activeCarType]);
+    const popularCars = data.cars.filter((car) => car.type === activeCarType);
 
     return (
         <section className={styles.popular}>
@@ -68,4 +65,4 @@ const PopularPage = () => {
         </section>
     );
 }
-export default PopularPage;
+export default PopularCars;

@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './About.module.scss'
 import GrayBlock from '../UI/GrayBlock/GrayBlock';
 import ServicesBlock from '../ServicesBlock/ServicesBlock';

@@ -1,11 +1,10 @@
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './DriverDetails.module.scss'
 import GrayBlock from '../UI/GrayBlock/GrayBlock';
 import Button from '../UI/Button/Button';
-import PriceOverview from '../PriceOverview/PriceOverview';
 import BookingInput from '../UI/BookingInput/BookingInput';
+import PriceOverview from '../PriceOverview/PriceOverview';
 import useOrderInput from '@/hooks/useOrderInput';
-import { useDispatch, useSelector } from 'react-redux';
 import { setUserName, setUserSurname, setUserEmail } from '@/reducer/userAccountSlice';
 
 const DriverDetails = ({setCurrentStatus, 

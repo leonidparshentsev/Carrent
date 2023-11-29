@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './BookingInput.module.scss'
 import classNames from 'classnames';
 

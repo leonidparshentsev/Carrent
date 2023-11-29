@@ -1,16 +1,16 @@
 'use client'
-import React, { useState } from 'react';
-import styles from './Header.module.scss'
-import Link from 'next/link';
-import Button from '../UI/Button/Button';
-import SignIn from '../SignIn/SignIn';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import styles from './Header.module.scss'
+import Button from '../UI/Button/Button';
+import SignIn from '../SignIn/SignIn';
 
 const Header = () => {
 
     const userAccountState = useSelector(state => state.userAccount);
-    const [signPopup, setSignPopup] = useState(false);
+    const [signInPopup, setSignInPopup] = useState(false);
     const router = useRouter();
 
     return (
@@ -37,7 +37,7 @@ const Header = () => {
                         <Button green style={{marginRight: 15}}>Get app</Button>
                     </Link>
                     {!userAccountState.isAuthorized ?
-                        <Button onClick={() => setSignPopup(true)}>Sign in</Button>
+                        <Button onClick={() => setSignInPopup(true)}>Sign in</Button>
                     :
                         <div className={styles.account_preview}
                             onClick={() => router.push('/user')}
@@ -57,7 +57,7 @@ const Header = () => {
                     Use our app to get <Link href='/#getapp'><span>10% discount</span></Link> on your first order
                 </p>
             </div>
-            {signPopup && <SignIn hide={() => setSignPopup(false)}/>}
+            {signInPopup && <SignIn hide={() => setSignInPopup(false)}/>}
         </header>
     );
 };

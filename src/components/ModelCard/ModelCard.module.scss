@@ -7,8 +7,6 @@
     width: 20rem;
     height: 22.9rem;
 
-    animation: spawn .7s ease-in-out;
-
     &.inactive {
         background-color: var(--gray);
         animation: none;
@@ -24,11 +22,13 @@
     }
 
     .model__image {
+        position: relative;
         margin: 2rem 0;
         width: 15rem;
         height: 7.5rem;
 
         img {
+            z-index: 1;
             height: 100%;
             width: 100%;
             transition: all .2s ease-in-out;
@@ -47,21 +47,6 @@
 
         span {
             color: var(--green);
-        }
-    }
-
-    @keyframes spawn {
-        0%{
-            // transform: translate(80rem, -22.9rem);
-            // transform: translateX(80rem);
-            // transform: translateY(-22.9rem);
-            transform: scale(.9);
-        } 
-        100% {
-            // transform: translate(0,0);
-            // transform: translateX(0rem);
-            // transform: translateY(0rem);
-            transform: scale(1);
         }
     }
 }

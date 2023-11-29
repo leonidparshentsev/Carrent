@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import styles from './SignIn.module.scss';
 import BookingInput from '../UI/BookingInput/BookingInput';
 import Button from '../UI/Button/Button';
-import styles from './SignIn.module.scss';
 import { setLogIn, setUserName, setUserSurname, setUserEmail } from '@/reducer/userAccountSlice';
-import { useDispatch } from 'react-redux';
 import useOrderInput from '@/hooks/useOrderInput';
 
 const SignIn = ({hide}) => {
@@ -16,7 +16,6 @@ const SignIn = ({hide}) => {
     const ref = useRef(null);
 
     const { firstName, lastName, email, setFirstName, setLastName, setEmail } = useOrderInput();
-
 
     const signInHandler = () => {
         if(email === '' || password === '') {

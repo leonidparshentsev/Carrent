@@ -1,36 +1,34 @@
-import React, { Fragment, useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './BookingPage.module.scss'
 import Status from '../Status/Status';
 import SelectedCar from '../SelectedCar/SelectedCar';
 import DriverDetails from '../DriverDetails/DriverDetails';
 import RentalCondition from '../RentalCondition/RentalCondition';
 import Accessories from '../Accessories/Accessories';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCarId } from '@/reducer/orderSlice';
 import Payment from '../Payment/Payment';
-import useSearchInputs from '@/hooks/useSearchInputs';
 import SuccessPayment from '../SuccessPayment/SuccessPayment';
-import useScrollTo from '@/hooks/useScrollTo';
 import { setNewOrder } from '@/reducer/userAccountSlice';
+import useSearchInputs from '@/hooks/useSearchInputs';
+import useScrollTo from '@/hooks/useScrollTo';
 import { convertToDate, convertToTime } from '@/utils/convertTimestamp';
 import initial from '../../../public/DB.json'
 
 const BookingPage = ({params}) => {
 
-    const carsList = useSelector(state => state.cars);
     const dispatch = useDispatch();
 
     // 'condition' / 'driver' / 'payment' / 'payment-done'
     const [currentStatus, setCurrentStatus] = useState('condition');
-    // const [currentCar, setCurrentCar] = useState(carsList[params.id - 1]);
-    const [currentCar, setCurrentCar] = useState(initial.cars[params.id - 1]);
     const [additionalCost, setAdditionalCost] = useState(0);
     const [isInputIncorrect, setInputIncorrect] = useState(false);
-
-    const { globalPickUpLocation, globalDropOffLocation, globalPickUpTime, globalDropOffTime } = useSearchInputs();
-    const daysCount = Math.floor((globalDropOffTime - globalPickUpTime) / ((24*59*60*1000)));
     const [ref, scrollToRef] = useScrollTo();
 
+    const { globalPickUpLocation, globalDropOffLocation, globalPickUpTime, globalDropOffTime } = useSearchInputs();
+
+    const currentCar = initial.cars[params.id - 1];
+    const daysCount = Math.floor((globalDropOffTime - globalPickUpTime) / ((24*59*60*1000)));
+    
     const order = {
             carId: params.id,
             totalPrice: ((currentCar?.price * daysCount) + additionalCost).toFixed(2),
@@ -41,10 +39,6 @@ const BookingPage = ({params}) => {
             dropOffDate: convertToDate(globalDropOffTime, '.'),
             dropOffTime: convertToTime(globalDropOffTime),
     };
-
-    useEffect(() => {
-        setCurrentCar(initial.cars[params.id - 1]);
-    }, [initial, params.id]);
 
     const markInvalidInputs = (isIncorrect) => {
         if(isIncorrect) {

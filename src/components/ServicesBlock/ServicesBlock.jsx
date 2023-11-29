@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ServicesBlock.module.scss'
 
 const ServicesBlock = ({imageSide, content}) => {

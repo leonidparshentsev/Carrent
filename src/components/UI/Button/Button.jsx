@@ -1,5 +1,3 @@
-"use client"
-import React from 'react';
 import styles from './Button.module.scss'
 
 const Button = ({green, children, ...props}) => {

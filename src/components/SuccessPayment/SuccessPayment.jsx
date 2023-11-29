@@ -1,7 +1,6 @@
-import React from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './SuccessPayment.module.scss'
 import Button from '../UI/Button/Button';
-import { useRouter } from 'next/navigation';
 
 const SuccessPayment = () => {
 

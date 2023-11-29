@@ -1,11 +1,10 @@
-import React from 'react';
 import styles from './SearchPage.module.scss'
 import DateInput from '../UI/DateInput/DateInput';
 import Button from '../UI/Button/Button';
-import useSearchInputs from '@/hooks/useSearchInputs';
-import useLoader from '@/hooks/useLoader';
 import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
 import LocationInput from '../UI/LocationInput/LocationInput';
+import useSearchInputs from '@/hooks/useSearchInputs';
+import useLoader from '@/hooks/useLoader';
 
 const SearchPage = () => {
 

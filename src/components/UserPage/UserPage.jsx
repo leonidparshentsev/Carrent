@@ -1,9 +1,9 @@
 'use client'
-import CarPreview from '../CarPreview/CarPreview';
-import styles from './UserPage.module.scss'
-import initial from '../../../public/DB.json'
 import { useSelector } from 'react-redux';
 import { redirect } from 'next/navigation';
+import styles from './UserPage.module.scss'
+import CarPreview from '../CarPreview/CarPreview';
+import data from '../../../public/DB.json'
 
 const UserPage = () => {
 
@@ -22,7 +22,7 @@ const UserPage = () => {
                         userAccountState.orders.map((order, index) => {
                            return <CarPreview inUserAccount 
                             key={`${index}${order.id}`}
-                            car={initial.cars[order.carId - 1]} 
+                            car={data.cars[order.carId - 1]} 
                             orderData={order}
                             />
                         })

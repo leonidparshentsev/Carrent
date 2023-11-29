@@ -1,22 +1,18 @@
 "use client"
 import HomePage from '@/components/HomePage/HomePage'
-import PopularPage from '@/components/PopularPage/PopularPage'
-import FeedbackPage from '@/components/FeedbackPage/FeedbackPage'
-import ValuesPage from '@/components/ValuesPage/ValuesPage'
-import AppPage from '@/components/AppPage/AppPage'
-// import { Provider } from 'react-redux'
-// import store from '@/store/store'
+import PopularCars from '@/components/PopularCars/PopularCars'
+import Feedback from '@/components/Feedback/Feedback'
+import Values from '@/components/Values/Values'
+import AppBlock from '@/components/AppBlock/AppBlock'
 
 export default function Home() {
   return (
-    // <Provider store={store}>
     <>
       <HomePage />
-      <PopularPage />
-      <FeedbackPage />
-      <ValuesPage />
-      <AppPage />
+      <PopularCars />
+      <Feedback />
+      <Values />
+      <AppBlock />
     </>
-    // </Provider>
   )
 }

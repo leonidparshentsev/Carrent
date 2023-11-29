@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import styles from './FeedbackPage.module.scss'
-import Carousel from '../UI/Carousel/Carousel';
+import { useState } from 'react';
+import styles from './Feedback.module.scss'
 import classNames from 'classnames';
+import Carousel from '../UI/Carousel/Carousel';
 
-const FeedbackPage = () => {
+const Feedback = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [cardAnimation, setCardAnimation] = useState('previous');
@@ -54,7 +54,7 @@ const FeedbackPage = () => {
     );
 };
 
-export default FeedbackPage;
+export default Feedback;
 
 const testimotionals = [
     {

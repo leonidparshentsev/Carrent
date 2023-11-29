@@ -1,9 +1,7 @@
-"use client"
-// import React, { useState } from 'react';
-import classNames from 'classnames';
 import styles from './Carousel.module.scss'
+import classNames from 'classnames';
 
-const Carousel = ({count, vertical, page, setPage, setAnimation}) => {
+const Carousel = ({count = 1, vertical, page, setPage, setAnimation}) => {
 
     const flipLeft = () => {
         if(page > 1) {
@@ -29,11 +27,11 @@ const Carousel = ({count, vertical, page, setPage, setAnimation}) => {
                 </svg>
             </div>
             <div className={styles.loading_line}>
-            {Array(count).fill().map((_, index) => {
-                return <div 
-                    className={classNames(styles.loading_plate, (page === index + 1 && styles.active))}
-                    key={index + 1}></div>
-            })}
+                {Array(count).fill().map((_, index) => {
+                    return <div 
+                        className={classNames(styles.loading_plate, (page === index + 1 && styles.active))}
+                        key={index + 1}></div>
+                })}
             </div>
             <div
                 onClick={flipRight} 

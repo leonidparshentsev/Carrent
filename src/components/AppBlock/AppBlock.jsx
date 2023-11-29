@@ -1,7 +1,6 @@
-import React from 'react';
-import styles from './AppPage.module.scss'
+import styles from './AppBlock.module.scss'
 
-const AppPage = () => {
+const AppBlock = () => {
     return (
         <section className={styles.app}>
             <div className={styles.container}>
@@ -31,4 +30,4 @@ const AppPage = () => {
     );
 };
 
-export default AppPage;
+export default AppBlock;

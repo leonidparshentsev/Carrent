@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Status.module.scss'
 import StatusLine from '../UI/StatusLine/StatusLine';
 
@@ -14,6 +13,5 @@ const Status = ({status}) => {
         </section>
     );
 };
-
 
 export default Status;

@@ -1,14 +1,12 @@
-// import React, { useState } from 'react';
 import styles from './DateInput.module.scss'
 import classNames from 'classnames';
 import useDate from '@/hooks/useDate';
 
-const DateInput = ({label, 
+const DateInput = ({ label, 
                 border,
                 invalid, 
                 initialDate,
-                changeDate, 
-    }) => {
+                changeDate }) => {
 
     const {dateInput,
             setDateInput,

@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Services.module.scss'
 import ServicesBlock from '../ServicesBlock/ServicesBlock';
 
