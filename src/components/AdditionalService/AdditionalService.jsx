@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './AdditionalService.module.scss'
 
 const serviceStates = {
@@ -12,7 +13,7 @@ const AdditionalService = ({serviceName, setAdditionalCost}) => {
     return (
         <div className={styles.additional_service}>
             <div className={styles.additional_service__img}>
-                <img src={src} alt="" />
+                <Image src={src} alt="Additional service image" fill sizes='100%' />
             </div>
             <div className={styles.additional_service__title}>
                 <h4 className={styles.header_title}>

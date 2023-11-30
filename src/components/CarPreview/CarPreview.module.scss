@@ -6,13 +6,9 @@
     margin-bottom: 2rem;
 
     .car__image {
+        position: relative;
         flex: 0 0 50%;
         align-self: center;
-
-        img {
-            height: auto;
-            width: 65%;
-        }
     }
 
     .car__about {

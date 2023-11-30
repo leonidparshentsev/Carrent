@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import styles from './CarPreview.module.scss'
 import classNames from 'classnames';
 import Button from '../UI/Button/Button';
+import ImageWithLoader from '../UI/ImageWithLoader/ImageWithLoader';
 
 const CarPreview = ({inUserAccount, car, orderData}) => {
     
@@ -13,8 +14,11 @@ const CarPreview = ({inUserAccount, car, orderData}) => {
     return (
         <article className={styles.car_preview}>
             <div className={styles.car__image}>
-                <img src={`/images/models/${car?.type}/${car?.model}.png`} 
-                    alt={car?.model} />
+                <ImageWithLoader 
+                    src={`/images/models/${car?.type}/${car?.model}.png`} 
+                    alt={car?.model} height='153' width='306'
+                    loaderProps={{style: {left: '0'}}}
+                />
             </div>
             <div className={styles.car__about}>
                 <h3 className={styles.about__title}>

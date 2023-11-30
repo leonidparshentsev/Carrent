@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './Support.module.scss'
 
 const Support = () => {
@@ -30,12 +31,12 @@ const Support = () => {
                             </div> 
                         </div>
                         <div className={styles.top__right}>
-                            <img src="/images/svg/help.svg" alt="Call manager"/>
+                            <Image src="/images/svg/help.svg" alt="Call manager" fill sizes='90%' />
                         </div>
                     </div>
                     <div className={styles.content__bottom}>
                         <div className={styles.rickroll__img}>
-                            <img src="/images/Rickrolling_QR_code.png" alt="qr-code" />
+                            <Image src="/images/Rickrolling_QR_code.png" alt="qr-code" fill sizes='100%' />
                         </div>
                         <h4 className={styles.rickroll__title}>
                             You can scan QR-code to contact

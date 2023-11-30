@@ -69,15 +69,12 @@
                 }
     
                 .top__right {
+                    position: relative;
                     flex: 0 0 38%;
+                    height: 29rem;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    
-                    img {
-                        width: 90%;
-                        height: 90%;
-                    }
                 }
             }
 
@@ -87,14 +84,10 @@
                 align-items: center;
 
                 .rickroll__img {
+                    position: relative;
                     width: 10rem;
                     height: 10rem;
                     margin-bottom: 2rem;
-
-                    img {
-                        width: 100%;
-                        height: 100%;
-                    }
                 }
 
                 .rickroll__title {

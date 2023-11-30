@@ -5,6 +5,7 @@ import SearchAnimation from '../UI/SearchAnimation/SearchAnimation';
 import LocationInput from '../UI/LocationInput/LocationInput';
 import useSearchInputs from '@/hooks/useSearchInputs';
 import useLoader from '@/hooks/useLoader';
+import ImageWithLoader from '../UI/ImageWithLoader/ImageWithLoader';
 
 const RentalCondition = ({car, isInputIncorrect}) => {
 
@@ -26,9 +27,10 @@ const RentalCondition = ({car, isInputIncorrect}) => {
                 {car?.model}
             </h2>
             <div className={styles.image}>
-                <img 
-                src={`/images/models/${car?.type}/${car?.model}.png`} 
-                alt=""/>
+                <ImageWithLoader 
+                    src={`/images/models/${car?.type}/${car?.model}.png`} 
+                    alt="Selected car" fill sizes='100%'
+                />
             </div>
             <div className={styles.inputs}>
                 <LocationInput border 

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './ServicesBlock.module.scss'
 
 const ServicesBlock = ({imageSide, content}) => {
@@ -5,7 +6,7 @@ const ServicesBlock = ({imageSide, content}) => {
         <div className={styles.services_block}>
             {imageSide === 'left' && (
                 <div className={styles.services_block__img}>
-                    <img src={content.img} alt="Services image" />
+                    <Image src={content.img} alt="Services image" fill sizes='100%'/>
                 </div>
             )}
             <div className={styles.services_block__text}>
@@ -18,7 +19,7 @@ const ServicesBlock = ({imageSide, content}) => {
             </div>
             {imageSide === 'right' && (
                 <div className={styles.services_block__img}>
-                    <img src={content.img} alt="Services image" />
+                    <Image src={content.img} alt="Services image" fill sizes='100%'/>
                 </div>
             )}
         </div>

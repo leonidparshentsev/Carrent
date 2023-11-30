@@ -1,6 +1,7 @@
 import styles from './SelectedCar.module.scss'
 import GrayBlock from '../UI/GrayBlock/GrayBlock';
 import initial from '../../../public/DB.json'
+import ImageWithLoader from '../UI/ImageWithLoader/ImageWithLoader';
 
 const SelectedCar = ({car}) => {
     const carList = initial.cars;
@@ -9,7 +10,9 @@ const SelectedCar = ({car}) => {
         <GrayBlock>
             <h2 className={styles.main_title}>Your selection</h2>
             <div className={styles.image}>
-                <img src={`/images/models/${carList[car.id - 1].type}/${carList[car.id - 1].model}.png`} alt=""/>
+                <ImageWithLoader 
+                    src={`/images/models/${carList[car.id - 1].type}/${carList[car.id - 1].model}.png`} alt="Selected car" fill sizes='100%'
+                />
             </div>
             <h4 className={styles.model_title}>{carList[car.id - 1].model}</h4>
             <div className={styles.overview}>
