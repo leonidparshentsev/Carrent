@@ -4,6 +4,10 @@
 }
 
 .input {
+    font-size: 1.3rem;
+    line-height: 1.4rem;
+    font-family: 'Catamaran', sans-serif;
+
     outline: none;
     background-color: var(--white);
     padding: 0 1rem;
@@ -18,13 +22,6 @@
         font-size: 1.3rem;
         line-height: 1.4rem;
         font-family: 'Catamaran', sans-serif;
-    }
-
-    &__location {
-        min-width: 16rem;
-        background: url('/images/svg/point.svg') no-repeat, white;
-        background-size: 1.8rem 1.8rem;
-        background-position: .9rem 1rem;
     }
 
     &.border {

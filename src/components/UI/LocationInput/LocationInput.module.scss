@@ -7,6 +7,10 @@
     }
 
     .input {
+        font-size: 1.3rem;
+        line-height: 1.4rem;
+        font-family: 'Catamaran', sans-serif;
+
         outline: none;
         background-color: var(--white);
         padding: 0 1rem;
@@ -40,6 +44,7 @@
     }
 
     .input__dropdown {
+        z-index: 1;
         position: absolute;
         left: 0;
         top: 6.6rem;
